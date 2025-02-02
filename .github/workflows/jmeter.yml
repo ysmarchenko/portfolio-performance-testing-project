@@ -40,14 +40,14 @@ jobs:
 
     # Step 5: Upload the results as an artifact
     - name: Upload Results
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: jmeter-reports-${{ github.event.inputs.threads }}-users
         path: reports/${{ github.event.inputs.threads }}-users
 
     # Step 6: Upload JTL results as an artifact (optional for raw results)
     - name: Upload JTL Results
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: jmeter-jtl-results
         path: results.jtl
