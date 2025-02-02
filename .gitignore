@@ -1,0 +1,16 @@
+# Ignore JMeter test files and logs
+*.jtl
+*.log
+
+# Ignore JMeter report folders
+/jmeter-reports/
+/target/
+
+# Ignore temporary and IDE-specific files
+.idea/
+.vscode/
+*.iml
+
+# Ignore other common files
+.DS_Store
+Thumbs.db
