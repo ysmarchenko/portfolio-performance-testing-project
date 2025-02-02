@@ -1,0 +1,2 @@
+fromPort,toPort,flight,price,airline,_token,inputName,address,city,state,zipCode,cardType,creditCardNumber,creditCardMonth,creditCardYear,nameOnCard
+Philadelphia,Buenos Aires,43,472.56,Virgin America,,Test Name,Test Address,Test City,Test State,,visa,1234567890,11,2017,Test Name on Card

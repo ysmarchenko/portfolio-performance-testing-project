@@ -29,7 +29,7 @@
           </collectionProp>
         </HeaderManager>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search Tickets HTTP Request" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search Tickets HTTP Request">
           <stringProp name="HTTPSampler.domain">blazedemo.com</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/reserve.php</stringProp>
@@ -41,7 +41,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">fromPort=Philadelphia&amp;toPort=Buenos+Aires</stringProp>
+                <stringProp name="Argument.value">fromPort=${fromPort}&amp;toPort=${toPort}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -144,7 +144,7 @@
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Select Ticket HTTP Request" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Select Ticket HTTP Request">
           <stringProp name="HTTPSampler.domain">blazedemo.com</stringProp>
           <stringProp name="HTTPSampler.path">/purchase.php</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -155,7 +155,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">flight=43&amp;price=472.56&amp;airline=Virgin+America&amp;fromPort=Philadelphia&amp;toPort=Buenos+Aires</stringProp>
+                <stringProp name="Argument.value">flight=${flight}&amp;price=${price}&amp;airline=${airline}&amp;fromPort=${fromPort}&amp;toPort=${toPort}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -257,7 +257,7 @@
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Confirm Ticket Booking HTTP Request" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Confirm Ticket Booking HTTP Request">
           <stringProp name="HTTPSampler.domain">blazedemo.com</stringProp>
           <stringProp name="HTTPSampler.path">/confirmation.php</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -268,7 +268,8 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">_token=&amp;inputName=Test+Name&amp;address=Test+Address&amp;city=Test+City&amp;state=Test+State&amp;zipCode=&amp;cardType=visa&amp;creditCardNumber=1234567890&amp;creditCardMonth=11&amp;creditCardYear=2017&amp;nameOnCard=Test+Name+on+Card</stringProp>
+                <stringProp name="Argument.value">_token=&amp;inputName=${inputName}&amp;address=${address}&amp;city=${city}&amp;state=${state}&amp;zipCode=${zipCode}&amp;cardType=${cardType}&amp;creditCardNumber=${creditCardNumber}&amp;creditCardMonth=${creditCardMonth}&amp;creditCardYear=${creditCardYear}&amp;nameOnCard=${nameOnCard}&#xd;
+</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -295,7 +296,7 @@
             <intProp name="Assertion.test_type">8</intProp>
           </ResponseAssertion>
           <hashTree/>
-          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
             <boolProp name="ResultCollector.error_logging">false</boolProp>
             <objProp>
               <name>saveConfig</name>
@@ -370,6 +371,18 @@
           </ResultCollector>
           <hashTree/>
         </hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config">
+          <stringProp name="filename">../test-data/Data.csv</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
       </hashTree>
     </hashTree>
   </hashTree>
