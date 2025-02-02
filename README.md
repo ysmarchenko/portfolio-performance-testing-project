@@ -20,9 +20,11 @@ The test plan consists of the following main parts:
 
 1. Download and install [Apache JMeter](https://jmeter.apache.org/).
 2. Clone this repository to your local machine 💻.
-3. Open the `LoadTestBlazeDemo-${NUMBER_OF_THREADS}-users.jmx` file in JMeter.
-4. Run the test plan by clicking on the **Start** button in JMeter.
-5. View the results in the **View Results Tree** and **Table** listeners.
+3. Open JMeter `bin` folder in the terminal
+4. To run the test from the command line, use the following command:
+
+   ```bash
+   ./jmeter -n -t ${PATH_TO_TEST_PLAN}/LoadTestBlazeDemo.jmx -JUSERS_COUNT=${THREADS_NUMBER} -l <path_to_results_folder>/Results-${THREADS_NUMBER}-users.jtl -e -o ${PATH_TO_RESULTS_FOLDER}/Test-Report-${THREADS_NUMBER}
 
 ## Test Plan Structure 📂
 

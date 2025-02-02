@@ -10,8 +10,8 @@
     </TestPlan>
     <hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group">
-        <intProp name="ThreadGroup.num_threads">100</intProp>
-        <intProp name="ThreadGroup.ramp_time">3</intProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(USERS_COUNT, 10)}</stringProp>
+        <intProp name="ThreadGroup.ramp_time">1</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
@@ -20,7 +20,7 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
           <collectionProp name="HeaderManager.headers">
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">content-type</stringProp>
@@ -29,7 +29,7 @@
           </collectionProp>
         </HeaderManager>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search Tickets HTTP Request">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search Tickets HTTP Request" enabled="true">
           <stringProp name="HTTPSampler.domain">blazedemo.com</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/reserve.php</stringProp>
@@ -69,7 +69,7 @@
             <stringProp name="TestPlan.comments">NOT FOUND</stringProp>
           </ResponseAssertion>
           <hashTree/>
-          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
             <boolProp name="ResultCollector.error_logging">false</boolProp>
             <objProp>
               <name>saveConfig</name>
@@ -144,7 +144,7 @@
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Select Ticket HTTP Request">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Select Ticket HTTP Request" enabled="true">
           <stringProp name="HTTPSampler.domain">blazedemo.com</stringProp>
           <stringProp name="HTTPSampler.path">/purchase.php</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -257,7 +257,7 @@
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Confirm Ticket Booking HTTP Request">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Confirm Ticket Booking HTTP Request" enabled="true">
           <stringProp name="HTTPSampler.domain">blazedemo.com</stringProp>
           <stringProp name="HTTPSampler.path">/confirmation.php</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -268,8 +268,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">_token=&amp;inputName=${inputName}&amp;address=${address}&amp;city=${city}&amp;state=${state}&amp;zipCode=${zipCode}&amp;cardType=${cardType}&amp;creditCardNumber=${creditCardNumber}&amp;creditCardMonth=${creditCardMonth}&amp;creditCardYear=${creditCardYear}&amp;nameOnCard=${nameOnCard}&#xd;
-</stringProp>
+                <stringProp name="Argument.value">_token=&amp;inputName=${inputName}&amp;address=${address}&amp;city=${city}&amp;state=${state}&amp;zipCode=${zipCode}&amp;cardType=${cardType}&amp;creditCardNumber=${creditCardNumber}&amp;creditCardMonth=${creditCardMonth}&amp;creditCardYear=${creditCardYear}&amp;nameOnCard=${nameOnCard}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -296,7 +295,7 @@
             <intProp name="Assertion.test_type">8</intProp>
           </ResponseAssertion>
           <hashTree/>
-          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
             <boolProp name="ResultCollector.error_logging">false</boolProp>
             <objProp>
               <name>saveConfig</name>
@@ -371,16 +370,16 @@
           </ResultCollector>
           <hashTree/>
         </hashTree>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config">
-          <stringProp name="filename">../test-data/Data.csv</stringProp>
-          <stringProp name="fileEncoding"></stringProp>
-          <stringProp name="variableNames"></stringProp>
-          <boolProp name="ignoreFirstLine">false</boolProp>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
           <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">../test-data/Data.csv</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
           <boolProp name="quotedData">false</boolProp>
           <boolProp name="recycle">true</boolProp>
-          <boolProp name="stopThread">false</boolProp>
           <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames"></stringProp>
         </CSVDataSet>
         <hashTree/>
       </hashTree>
