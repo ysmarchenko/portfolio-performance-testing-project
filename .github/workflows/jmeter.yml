@@ -27,12 +27,11 @@ jobs:
     # Step 3: Install JMeter
     - name: Install JMeter
       run: |
-        sudo apt-get update -y
-        sudo apt-get install -y openjdk-11-jdk
         wget https://dlcdn.apache.org/jmeter/binaries/apache-jmeter-5.6.3.tgz
         tar -xvzf apache-jmeter-5.6.3.tgz
-        export JMETER_HOME=$(pwd)/apache-jmeter-5.6.3
-        export PATH=$JMETER_HOME/bin:$PATH
+        sudo mv apache-jmeter-5.6.3 /opt/jmeter
+        echo "export JMETER_HOME=/opt/jmeter" >> $GITHUB_ENV
+        echo "export PATH=\$JMETER_HOME/bin:\$PATH" >> $GITHUB_ENV
     
     # Step 4: Run the JMeter test with the specified number of threads
     - name: Run JMeter Load Test
