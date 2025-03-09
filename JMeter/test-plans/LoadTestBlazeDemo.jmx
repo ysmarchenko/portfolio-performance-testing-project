@@ -5,8 +5,6 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
-      <boolProp name="TestPlan.functional_mode">false</boolProp>
-      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
       <ProxyControl guiclass="ProxyControlGui" testclass="ProxyControl" testname="HTTP(S) Test Script Recorder">
@@ -32,9 +30,9 @@
         <stringProp name="ProxyControlGui.content_type_exclude"></stringProp>
       </ProxyControl>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
-        <stringProp name="ThreadGroup.num_threads">${__P(USERS_COUNT, 200)}</stringProp>
-        <intProp name="ThreadGroup.ramp_time">30</intProp>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group">
+        <stringProp name="ThreadGroup.num_threads">${__P(USERS_COUNT, 10)}</stringProp>
+        <intProp name="ThreadGroup.ramp_time">10</intProp>
         <longProp name="ThreadGroup.duration">60</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
@@ -45,7 +43,7 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding"></stringProp>
           <stringProp name="filename">../test-data/Data.csv</stringProp>
@@ -57,27 +55,17 @@
           <stringProp name="variableNames"></stringProp>
         </CSVDataSet>
         <hashTree/>
-        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
           <collectionProp name="Arguments.arguments">
-            <elementProp name="API_KEY" elementType="Argument">
-              <stringProp name="Argument.name">API_KEY</stringProp>
-              <stringProp name="Argument.value">8RWMCGFX4X0IRY1GHWDM3HM5WDSJF9LP62BSDULOL3XK7WAIFGDB7EU526O1A0UPLH1S8SJP320LUXJKCHLJX1822GU1KFE80CNW6PXVZ83IOO6LJ731EN164IFVUFMC8DOGYP2MXHN47WGVB192F2PTQRQXCF95OJWAKGOH9S69DZAI5OPJW8QSPDE6LQQ9</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="PROJECT_ID" elementType="Argument">
-              <stringProp name="Argument.name">PROJECT_ID</stringProp>
-              <stringProp name="Argument.value">lXviifSA1NskA4wsG9N6WoWg</stringProp>
-              <stringProp name="Argument.metadata">=</stringProp>
-            </elementProp>
-            <elementProp name="DATAPIPE_SERVER_NAME" elementType="Argument">
-              <stringProp name="Argument.name">DATAPIPE_SERVER_NAME</stringProp>
-              <stringProp name="Argument.value">blazemeter.datapipe.prodperfect.com</stringProp>
+            <elementProp name="BLAZEMETER_URL" elementType="Argument">
+              <stringProp name="Argument.name">BLAZEMETER_URL</stringProp>
+              <stringProp name="Argument.value">www.blazedemo.com</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
           </collectionProp>
         </Arguments>
         <hashTree/>
-        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
           <collectionProp name="HeaderManager.headers">
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">content-type</stringProp>
@@ -86,95 +74,25 @@
           </collectionProp>
         </HeaderManager>
         <hashTree/>
-        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager">
           <collectionProp name="CookieManager.cookies"/>
           <boolProp name="CookieManager.clearEachIteration">false</boolProp>
           <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
         </CookieManager>
         <hashTree/>
-        <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
+        <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager">
           <boolProp name="clearEachIteration">false</boolProp>
           <boolProp name="useExpires">true</boolProp>
           <boolProp name="CacheManager.controlledByThread">false</boolProp>
         </CacheManager>
         <hashTree/>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC-1-View-Home-Page" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC-1-View-Home-Page">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/complete/search" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="home">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
-            <stringProp name="HTTPSampler.domain">www.google.com</stringProp>
-            <stringProp name="HTTPSampler.port">443</stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-            <stringProp name="HTTPSampler.path">/complete/search</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="client" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">client</stringProp>
-                  <stringProp name="Argument.value">firefox</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                </elementProp>
-                <elementProp name="channel" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">channel</stringProp>
-                  <stringProp name="Argument.value">ftr</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                </elementProp>
-                <elementProp name="q" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">q</stringProp>
-                  <stringProp name="Argument.value"></stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Accept-Language" elementType="Header">
-                  <stringProp name="Header.name">Accept-Language</stringProp>
-                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Encoding" elementType="Header">
-                  <stringProp name="Header.name">Accept-Encoding</stringProp>
-                  <stringProp name="Header.value">gzip, deflate, br, zstd</stringProp>
-                </elementProp>
-                <elementProp name="User-Agent" elementType="Header">
-                  <stringProp name="Header.name">User-Agent</stringProp>
-                  <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0</stringProp>
-                </elementProp>
-                <elementProp name="Accept" elementType="Header">
-                  <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">*/*</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="49586">200</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">8</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/" enabled="true">
-            <boolProp name="HTTPSampler.image_parser">true</boolProp>
-            <stringProp name="HTTPSampler.domain">www.blazedemo.com</stringProp>
+            <stringProp name="HTTPSampler.domain">${BLAZEMETER_URL}</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -188,52 +106,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Sec-Fetch-Mode" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                  <stringProp name="Header.value">navigate</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Site" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                  <stringProp name="Header.value">none</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Language" elementType="Header">
-                  <stringProp name="Header.name">Accept-Language</stringProp>
-                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-User" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-User</stringProp>
-                  <stringProp name="Header.value">?1</stringProp>
-                </elementProp>
-                <elementProp name="Priority" elementType="Header">
-                  <stringProp name="Header.name">Priority</stringProp>
-                  <stringProp name="Header.value">u=0, i</stringProp>
-                </elementProp>
-                <elementProp name="Accept" elementType="Header">
-                  <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</stringProp>
-                </elementProp>
-                <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
-                  <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
-                  <stringProp name="Header.value">1</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Encoding" elementType="Header">
-                  <stringProp name="Header.name">Accept-Encoding</stringProp>
-                  <stringProp name="Header.value">gzip, deflate, br, zstd</stringProp>
-                </elementProp>
-                <elementProp name="User-Agent" elementType="Header">
-                  <stringProp name="Header.name">User-Agent</stringProp>
-                  <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Dest" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
-                  <stringProp name="Header.value">document</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="49586">200</stringProp>
               </collectionProp>
@@ -243,7 +116,7 @@
               <intProp name="Assertion.test_type">8</intProp>
             </ResponseAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Text Assertion" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Text Assertion">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="1385949710">Welcome to the Simple Travel Agency!</stringProp>
               </collectionProp>
@@ -255,383 +128,14 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/events/pageviews" enabled="true">
-            <boolProp name="HTTPSampler.image_parser">true</boolProp>
-            <stringProp name="HTTPSampler.domain">${DATAPIPE_SERVER_NAME}</stringProp>
-            <stringProp name="HTTPSampler.port">443</stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-            <stringProp name="HTTPSampler.path">/v1/3.0/projects/${API_KEY}</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;visitor&quot;:{&quot;user_id&quot;:null},&quot;event_uuid&quot;:&quot;2161eca9-1c09-406a-9d54-a7bd65b0293c&quot;,&quot;iso_time_full&quot;:&quot;2025-02-23T14:00:53.053Z&quot;,&quot;local_time_full&quot;:&quot;Sun Feb 23 2025 15:00:53 GMT+0100 (Central European Standard Time)&quot;,&quot;session&quot;:{&quot;session_uuid&quot;:&quot;4d5e25f8-7eac-42f0-990e-0fca9c3e81fe&quot;},&quot;tracked_by&quot;:&quot;prodperfect-keen-tracking-2.0.23&quot;,&quot;tracker_load_uuid&quot;:&quot;5f8a9414-b839-435c-a454-77ea85f8820a&quot;,&quot;tracker_loaded_at&quot;:&quot;2025-02-23T14:00:53.051Z&quot;,&quot;prodperfect_test_data&quot;:null,&quot;user&quot;:{&quot;uuid&quot;:&quot;2f6494dd-f23c-4ba5-a3eb-7f03a05dd771&quot;},&quot;page&quot;:{&quot;title&quot;:&quot;BlazeDemo&quot;,&quot;description&quot;:&quot;BlazeMeter demo app&quot;,&quot;scroll_state&quot;:{&quot;pixel&quot;:713,&quot;pixel_max&quot;:713,&quot;ratio&quot;:1,&quot;ratio_max&quot;:1},&quot;time_on_page&quot;:0,&quot;time_on_page_ms&quot;:2},&quot;ip_address&quot;:&quot;${keen.ip}&quot;,&quot;geo&quot;:{},&quot;user_agent&quot;:&quot;${keen.user_agent}&quot;,&quot;tech&quot;:{&quot;profile&quot;:{&quot;cookies&quot;:true,&quot;codeName&quot;:&quot;Mozilla&quot;,&quot;description&quot;:&quot;BlazeMeter demo app&quot;,&quot;language&quot;:&quot;en-US&quot;,&quot;name&quot;:&quot;Netscape&quot;,&quot;online&quot;:true,&quot;platform&quot;:&quot;MacIntel&quot;,&quot;useragent&quot;:&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0&quot;,&quot;version&quot;:&quot;5.0 (Macintosh)&quot;,&quot;screen&quot;:{&quot;height&quot;:900,&quot;width&quot;:1440,&quot;colorDepth&quot;:30,&quot;pixelDepth&quot;:30,&quot;availHeight&quot;:797,&quot;availWidth&quot;:1440,&quot;orientation&quot;:{&quot;angle&quot;:0,&quot;type&quot;:&quot;landscape&quot;}},&quot;window&quot;:{&quot;height&quot;:713,&quot;width&quot;:1440,&quot;scrollHeight&quot;:713,&quot;ratio&quot;:{&quot;height&quot;:0.89,&quot;width&quot;:1}}}},&quot;url&quot;:{&quot;full&quot;:&quot;https://www.blazedemo.com/&quot;,&quot;info&quot;:{}},&quot;referrer&quot;:{&quot;initial&quot;:&quot;https://www.google.com/&quot;,&quot;full&quot;:&quot;&quot;,&quot;info&quot;:{}},&quot;time&quot;:{&quot;local&quot;:{},&quot;utc&quot;:{}},&quot;keen&quot;:{&quot;timestamp&quot;:&quot;2025-02-23T14:00:53.053Z&quot;,&quot;addons&quot;:[{&quot;name&quot;:&quot;keen:ua_parser&quot;,&quot;input&quot;:{&quot;ua_string&quot;:&quot;user_agent&quot;},&quot;output&quot;:&quot;tech&quot;},{&quot;name&quot;:&quot;keen:url_parser&quot;,&quot;input&quot;:{&quot;url&quot;:&quot;url.full&quot;},&quot;output&quot;:&quot;url.info&quot;},{&quot;name&quot;:&quot;keen:url_parser&quot;,&quot;input&quot;:{&quot;url&quot;:&quot;referrer.full&quot;},&quot;output&quot;:&quot;referrer.info&quot;},{&quot;name&quot;:&quot;keen:date_time_parser&quot;,&quot;input&quot;:{&quot;date_time&quot;:&quot;keen.timestamp&quot;},&quot;output&quot;:&quot;time.utc&quot;},{&quot;name&quot;:&quot;keen:date_time_parser&quot;,&quot;input&quot;:{&quot;date_time&quot;:&quot;local_time_full&quot;},&quot;output&quot;:&quot;time.local&quot;},{&quot;name&quot;:&quot;keen:ip_to_geo&quot;,&quot;input&quot;:{&quot;ip&quot;:&quot;ip_address&quot;,&quot;remove_ip_property&quot;:false},&quot;output&quot;:&quot;geo&quot;}]}}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Sec-Fetch-Mode" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                  <stringProp name="Header.value">no-cors</stringProp>
-                </elementProp>
-                <elementProp name="Referer" elementType="Header">
-                  <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com/</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Site" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                  <stringProp name="Header.value">cross-site</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Language" elementType="Header">
-                  <stringProp name="Header.name">Accept-Language</stringProp>
-                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
-                </elementProp>
-                <elementProp name="Origin" elementType="Header">
-                  <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com</stringProp>
-                </elementProp>
-                <elementProp name="Priority" elementType="Header">
-                  <stringProp name="Header.name">Priority</stringProp>
-                  <stringProp name="Header.value">u=6</stringProp>
-                </elementProp>
-                <elementProp name="Accept" elementType="Header">
-                  <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">*/*</stringProp>
-                </elementProp>
-                <elementProp name="Content-Type" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">text/plain;charset=UTF-8</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Encoding" elementType="Header">
-                  <stringProp name="Header.name">Accept-Encoding</stringProp>
-                  <stringProp name="Header.value">gzip, deflate, br, zstd</stringProp>
-                </elementProp>
-                <elementProp name="User-Agent" elementType="Header">
-                  <stringProp name="Header.name">User-Agent</stringProp>
-                  <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Dest" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
-                  <stringProp name="Header.value">empty</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="49590">204</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">8</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-          </hashTree>
-          <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
-            <stringProp name="DurationAssertion.duration">5000</stringProp>
-          </DurationAssertion>
-          <hashTree/>
-          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
-            <boolProp name="ResultCollector.error_logging">false</boolProp>
-            <objProp>
-              <name>saveConfig</name>
-              <value class="SampleSaveConfiguration">
-                <time>true</time>
-                <latency>true</latency>
-                <timestamp>true</timestamp>
-                <success>true</success>
-                <label>true</label>
-                <code>true</code>
-                <message>true</message>
-                <threadName>true</threadName>
-                <dataType>true</dataType>
-                <encoding>false</encoding>
-                <assertions>true</assertions>
-                <subresults>true</subresults>
-                <responseData>false</responseData>
-                <samplerData>false</samplerData>
-                <xml>false</xml>
-                <fieldNames>true</fieldNames>
-                <responseHeaders>false</responseHeaders>
-                <requestHeaders>false</requestHeaders>
-                <responseDataOnError>false</responseDataOnError>
-                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-                <assertionsResultsToSave>0</assertionsResultsToSave>
-                <bytes>true</bytes>
-                <sentBytes>true</sentBytes>
-                <url>true</url>
-                <threadCounts>true</threadCounts>
-                <idleTime>true</idleTime>
-                <connectTime>true</connectTime>
-              </value>
-            </objProp>
-            <stringProp name="filename"></stringProp>
-          </ResultCollector>
-          <hashTree/>
         </hashTree>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC-2-Search-Tickets" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/events/clicks">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="reserve">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
-            <stringProp name="HTTPSampler.domain">${DATAPIPE_SERVER_NAME}</stringProp>
-            <stringProp name="HTTPSampler.port">443</stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-            <stringProp name="HTTPSampler.path">/v1/3.0/projects/${PROJECT_ID}/events/clicks?api_key=${API_KEY}</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;visitor&quot;:{&quot;user_id&quot;:null},&quot;event_uuid&quot;:&quot;e5fcdb41-1c7a-4844-8826-631ed909fc57&quot;,&quot;iso_time_full&quot;:&quot;2025-02-23T14:07:06.222Z&quot;,&quot;local_time_full&quot;:&quot;Sun Feb 23 2025 15:07:06 GMT+0100 (Central European Standard Time)&quot;,&quot;session&quot;:{&quot;session_uuid&quot;:&quot;4d5e25f8-7eac-42f0-990e-0fca9c3e81fe&quot;},&quot;tracked_by&quot;:&quot;prodperfect-keen-tracking-2.0.23&quot;,&quot;tracker_load_uuid&quot;:&quot;5f8a9414-b839-435c-a454-77ea85f8820a&quot;,&quot;tracker_loaded_at&quot;:&quot;2025-02-23T14:00:53.051Z&quot;,&quot;prodperfect_test_data&quot;:null,&quot;user&quot;:{&quot;uuid&quot;:&quot;2f6494dd-f23c-4ba5-a3eb-7f03a05dd771&quot;},&quot;page&quot;:{&quot;title&quot;:&quot;BlazeDemo&quot;,&quot;description&quot;:&quot;BlazeMeter demo app&quot;,&quot;scroll_state&quot;:{&quot;pixel&quot;:713,&quot;pixel_max&quot;:713,&quot;ratio&quot;:1,&quot;ratio_max&quot;:1},&quot;time_on_page&quot;:373,&quot;time_on_page_ms&quot;:373171},&quot;ip_address&quot;:&quot;${keen.ip}&quot;,&quot;geo&quot;:{},&quot;user_agent&quot;:&quot;${keen.user_agent}&quot;,&quot;tech&quot;:{&quot;profile&quot;:{&quot;cookies&quot;:true,&quot;codeName&quot;:&quot;Mozilla&quot;,&quot;description&quot;:&quot;BlazeMeter demo app&quot;,&quot;language&quot;:&quot;en-US&quot;,&quot;name&quot;:&quot;Netscape&quot;,&quot;online&quot;:true,&quot;platform&quot;:&quot;MacIntel&quot;,&quot;useragent&quot;:&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0&quot;,&quot;version&quot;:&quot;5.0 (Macintosh)&quot;,&quot;screen&quot;:{&quot;height&quot;:900,&quot;width&quot;:1440,&quot;colorDepth&quot;:30,&quot;pixelDepth&quot;:30,&quot;availHeight&quot;:797,&quot;availWidth&quot;:1440,&quot;orientation&quot;:{&quot;angle&quot;:0,&quot;type&quot;:&quot;landscape&quot;}},&quot;window&quot;:{&quot;height&quot;:713,&quot;width&quot;:1440,&quot;scrollHeight&quot;:713,&quot;ratio&quot;:{&quot;height&quot;:0.89,&quot;width&quot;:1}}}},&quot;url&quot;:{&quot;full&quot;:&quot;https://www.blazedemo.com/&quot;,&quot;info&quot;:{}},&quot;referrer&quot;:{&quot;initial&quot;:&quot;https://www.google.com/&quot;,&quot;full&quot;:&quot;&quot;,&quot;info&quot;:{}},&quot;time&quot;:{&quot;local&quot;:{},&quot;utc&quot;:{}},&quot;keen&quot;:{&quot;timestamp&quot;:&quot;2025-02-23T14:07:06.222Z&quot;,&quot;addons&quot;:[{&quot;name&quot;:&quot;keen:ua_parser&quot;,&quot;input&quot;:{&quot;ua_string&quot;:&quot;user_agent&quot;},&quot;output&quot;:&quot;tech&quot;},{&quot;name&quot;:&quot;keen:url_parser&quot;,&quot;input&quot;:{&quot;url&quot;:&quot;url.full&quot;},&quot;output&quot;:&quot;url.info&quot;},{&quot;name&quot;:&quot;keen:url_parser&quot;,&quot;input&quot;:{&quot;url&quot;:&quot;referrer.full&quot;},&quot;output&quot;:&quot;referrer.info&quot;},{&quot;name&quot;:&quot;keen:date_time_parser&quot;,&quot;input&quot;:{&quot;date_time&quot;:&quot;keen.timestamp&quot;},&quot;output&quot;:&quot;time.utc&quot;},{&quot;name&quot;:&quot;keen:date_time_parser&quot;,&quot;input&quot;:{&quot;date_time&quot;:&quot;local_time_full&quot;},&quot;output&quot;:&quot;time.local&quot;},{&quot;name&quot;:&quot;keen:ip_to_geo&quot;,&quot;input&quot;:{&quot;ip&quot;:&quot;ip_address&quot;,&quot;remove_ip_property&quot;:false},&quot;output&quot;:&quot;geo&quot;}]},&quot;element&quot;:{&quot;class&quot;:&quot;btn btn-primary&quot;,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;type&quot;:&quot;submit&quot;,&quot;class&quot;:&quot;btn btn-primary&quot;,&quot;unique_selector&quot;:&quot;form &gt; .container &gt; .btn&quot;},&quot;node_name&quot;:&quot;INPUT&quot;,&quot;tag_name&quot;:&quot;INPUT&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:&quot;submit&quot;,&quot;n_parents&quot;:[{&quot;class&quot;:&quot;container&quot;,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;class&quot;:&quot;container&quot;,&quot;unique_selector&quot;:&quot;form &gt; .container&quot;},&quot;node_name&quot;:&quot;DIV&quot;,&quot;tag_name&quot;:&quot;DIV&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:1},{&quot;class&quot;:null,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;action&quot;:&quot;reserve.php&quot;,&quot;method&quot;:&quot;post&quot;,&quot;unique_selector&quot;:&quot;form&quot;},&quot;node_name&quot;:&quot;FORM&quot;,&quot;tag_name&quot;:&quot;FORM&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:2},{&quot;class&quot;:&quot;container&quot;,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;class&quot;:&quot;container&quot;,&quot;unique_selector&quot;:&quot;body &gt; :nth-child(3)&quot;},&quot;node_name&quot;:&quot;DIV&quot;,&quot;tag_name&quot;:&quot;DIV&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:3},{&quot;class&quot;:null,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;unique_selector&quot;:&quot;body&quot;},&quot;node_name&quot;:&quot;BODY&quot;,&quot;tag_name&quot;:&quot;BODY&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:4},{&quot;class&quot;:null,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;lang&quot;:&quot;en&quot;,&quot;unique_selector&quot;:&quot;html&quot;},&quot;node_name&quot;:&quot;HTML&quot;,&quot;tag_name&quot;:&quot;HTML&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:5},{&quot;class&quot;:null,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{},&quot;node_name&quot;:&quot;#document&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:6}],&quot;selector&quot;:&quot;body &gt; div:eq(2) &gt; form &gt; div &gt; input&quot;,&quot;text_content&quot;:null,&quot;cursor&quot;:&quot;pointer&quot;,&quot;x_position&quot;:135,&quot;y_position&quot;:392}}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Sec-Fetch-Mode" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                  <stringProp name="Header.value">no-cors</stringProp>
-                </elementProp>
-                <elementProp name="Referer" elementType="Header">
-                  <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com/</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Site" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                  <stringProp name="Header.value">cross-site</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Language" elementType="Header">
-                  <stringProp name="Header.name">Accept-Language</stringProp>
-                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
-                </elementProp>
-                <elementProp name="Origin" elementType="Header">
-                  <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com</stringProp>
-                </elementProp>
-                <elementProp name="Priority" elementType="Header">
-                  <stringProp name="Header.name">Priority</stringProp>
-                  <stringProp name="Header.value">u=6</stringProp>
-                </elementProp>
-                <elementProp name="Accept" elementType="Header">
-                  <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">*/*</stringProp>
-                </elementProp>
-                <elementProp name="Content-Type" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">text/plain;charset=UTF-8</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Encoding" elementType="Header">
-                  <stringProp name="Header.name">Accept-Encoding</stringProp>
-                  <stringProp name="Header.value">gzip, deflate, br, zstd</stringProp>
-                </elementProp>
-                <elementProp name="User-Agent" elementType="Header">
-                  <stringProp name="Header.name">User-Agent</stringProp>
-                  <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Dest" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
-                  <stringProp name="Header.value">empty</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="49590">204</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">8</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/events/pageunloads" enabled="true">
-            <boolProp name="HTTPSampler.image_parser">true</boolProp>
-            <stringProp name="HTTPSampler.domain">${DATAPIPE_SERVER_NAME}</stringProp>
-            <stringProp name="HTTPSampler.port">443</stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-            <stringProp name="HTTPSampler.path">/v1/3.0/projects/${PROJECT_ID}/events/pageunloads?api_key=${API_KEY}</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;visitor&quot;:{&quot;user_id&quot;:null},&quot;event_uuid&quot;:&quot;0392b462-046b-4cf7-ae11-a9b2c1a2135c&quot;,&quot;iso_time_full&quot;:&quot;2025-02-23T14:07:06.225Z&quot;,&quot;local_time_full&quot;:&quot;Sun Feb 23 2025 15:07:06 GMT+0100 (Central European Standard Time)&quot;,&quot;session&quot;:{&quot;session_uuid&quot;:&quot;4d5e25f8-7eac-42f0-990e-0fca9c3e81fe&quot;},&quot;tracked_by&quot;:&quot;prodperfect-keen-tracking-2.0.23&quot;,&quot;tracker_load_uuid&quot;:&quot;5f8a9414-b839-435c-a454-77ea85f8820a&quot;,&quot;tracker_loaded_at&quot;:&quot;2025-02-23T14:00:53.051Z&quot;,&quot;prodperfect_test_data&quot;:null,&quot;user&quot;:{&quot;uuid&quot;:&quot;2f6494dd-f23c-4ba5-a3eb-7f03a05dd771&quot;},&quot;page&quot;:{&quot;title&quot;:&quot;BlazeDemo&quot;,&quot;description&quot;:&quot;BlazeMeter demo app&quot;,&quot;scroll_state&quot;:{&quot;pixel&quot;:713,&quot;pixel_max&quot;:713,&quot;ratio&quot;:1,&quot;ratio_max&quot;:1},&quot;time_on_page&quot;:373,&quot;time_on_page_ms&quot;:373174},&quot;ip_address&quot;:&quot;${keen.ip}&quot;,&quot;geo&quot;:{},&quot;user_agent&quot;:&quot;${keen.user_agent}&quot;,&quot;tech&quot;:{&quot;profile&quot;:{&quot;cookies&quot;:true,&quot;codeName&quot;:&quot;Mozilla&quot;,&quot;description&quot;:&quot;BlazeMeter demo app&quot;,&quot;language&quot;:&quot;en-US&quot;,&quot;name&quot;:&quot;Netscape&quot;,&quot;online&quot;:true,&quot;platform&quot;:&quot;MacIntel&quot;,&quot;useragent&quot;:&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0&quot;,&quot;version&quot;:&quot;5.0 (Macintosh)&quot;,&quot;screen&quot;:{&quot;height&quot;:900,&quot;width&quot;:1440,&quot;colorDepth&quot;:30,&quot;pixelDepth&quot;:30,&quot;availHeight&quot;:797,&quot;availWidth&quot;:1440,&quot;orientation&quot;:{&quot;angle&quot;:0,&quot;type&quot;:&quot;landscape&quot;}},&quot;window&quot;:{&quot;height&quot;:713,&quot;width&quot;:1440,&quot;scrollHeight&quot;:713,&quot;ratio&quot;:{&quot;height&quot;:0.89,&quot;width&quot;:1}}}},&quot;url&quot;:{&quot;full&quot;:&quot;https://www.blazedemo.com/&quot;,&quot;info&quot;:{}},&quot;referrer&quot;:{&quot;initial&quot;:&quot;https://www.google.com/&quot;,&quot;full&quot;:&quot;&quot;,&quot;info&quot;:{}},&quot;time&quot;:{&quot;local&quot;:{},&quot;utc&quot;:{}},&quot;keen&quot;:{&quot;timestamp&quot;:&quot;2025-02-23T14:07:06.225Z&quot;,&quot;addons&quot;:[{&quot;name&quot;:&quot;keen:ua_parser&quot;,&quot;input&quot;:{&quot;ua_string&quot;:&quot;user_agent&quot;},&quot;output&quot;:&quot;tech&quot;},{&quot;name&quot;:&quot;keen:url_parser&quot;,&quot;input&quot;:{&quot;url&quot;:&quot;url.full&quot;},&quot;output&quot;:&quot;url.info&quot;},{&quot;name&quot;:&quot;keen:url_parser&quot;,&quot;input&quot;:{&quot;url&quot;:&quot;referrer.full&quot;},&quot;output&quot;:&quot;referrer.info&quot;},{&quot;name&quot;:&quot;keen:date_time_parser&quot;,&quot;input&quot;:{&quot;date_time&quot;:&quot;keen.timestamp&quot;},&quot;output&quot;:&quot;time.utc&quot;},{&quot;name&quot;:&quot;keen:date_time_parser&quot;,&quot;input&quot;:{&quot;date_time&quot;:&quot;local_time_full&quot;},&quot;output&quot;:&quot;time.local&quot;},{&quot;name&quot;:&quot;keen:ip_to_geo&quot;,&quot;input&quot;:{&quot;ip&quot;:&quot;ip_address&quot;,&quot;remove_ip_property&quot;:false},&quot;output&quot;:&quot;geo&quot;}]}}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Sec-Fetch-Mode" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                  <stringProp name="Header.value">no-cors</stringProp>
-                </elementProp>
-                <elementProp name="Referer" elementType="Header">
-                  <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com/</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Site" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                  <stringProp name="Header.value">cross-site</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Language" elementType="Header">
-                  <stringProp name="Header.name">Accept-Language</stringProp>
-                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
-                </elementProp>
-                <elementProp name="Origin" elementType="Header">
-                  <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com</stringProp>
-                </elementProp>
-                <elementProp name="Priority" elementType="Header">
-                  <stringProp name="Header.name">Priority</stringProp>
-                  <stringProp name="Header.value">u=6</stringProp>
-                </elementProp>
-                <elementProp name="Accept" elementType="Header">
-                  <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">*/*</stringProp>
-                </elementProp>
-                <elementProp name="Content-Type" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">text/plain;charset=UTF-8</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Encoding" elementType="Header">
-                  <stringProp name="Header.name">Accept-Encoding</stringProp>
-                  <stringProp name="Header.value">gzip, deflate, br, zstd</stringProp>
-                </elementProp>
-                <elementProp name="User-Agent" elementType="Header">
-                  <stringProp name="Header.name">User-Agent</stringProp>
-                  <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Dest" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
-                  <stringProp name="Header.value">empty</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="49590">204</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">8</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/events/form_submissions" enabled="true">
-            <boolProp name="HTTPSampler.image_parser">true</boolProp>
-            <stringProp name="HTTPSampler.domain">${DATAPIPE_SERVER_NAME}</stringProp>
-            <stringProp name="HTTPSampler.port">443</stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-            <stringProp name="HTTPSampler.path">/v1/3.0/projects/${PROJECT_ID}/events/form_submissions?api_key=${API_KEY}</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;visitor&quot;:{&quot;user_id&quot;:null},&quot;event_uuid&quot;:&quot;3adbcbc8-a541-4c8f-b17e-1fcf5edd4b58&quot;,&quot;iso_time_full&quot;:&quot;2025-02-23T14:07:06.224Z&quot;,&quot;local_time_full&quot;:&quot;Sun Feb 23 2025 15:07:06 GMT+0100 (Central European Standard Time)&quot;,&quot;session&quot;:{&quot;session_uuid&quot;:&quot;4d5e25f8-7eac-42f0-990e-0fca9c3e81fe&quot;},&quot;tracked_by&quot;:&quot;prodperfect-keen-tracking-2.0.23&quot;,&quot;tracker_load_uuid&quot;:&quot;5f8a9414-b839-435c-a454-77ea85f8820a&quot;,&quot;tracker_loaded_at&quot;:&quot;2025-02-23T14:00:53.051Z&quot;,&quot;prodperfect_test_data&quot;:null,&quot;user&quot;:{&quot;uuid&quot;:&quot;2f6494dd-f23c-4ba5-a3eb-7f03a05dd771&quot;},&quot;page&quot;:{&quot;title&quot;:&quot;BlazeDemo&quot;,&quot;description&quot;:&quot;BlazeMeter demo app&quot;,&quot;scroll_state&quot;:{&quot;pixel&quot;:713,&quot;pixel_max&quot;:713,&quot;ratio&quot;:1,&quot;ratio_max&quot;:1},&quot;time_on_page&quot;:373,&quot;time_on_page_ms&quot;:373173},&quot;ip_address&quot;:&quot;${keen.ip}&quot;,&quot;geo&quot;:{},&quot;user_agent&quot;:&quot;${keen.user_agent}&quot;,&quot;tech&quot;:{&quot;profile&quot;:{&quot;cookies&quot;:true,&quot;codeName&quot;:&quot;Mozilla&quot;,&quot;description&quot;:&quot;BlazeMeter demo app&quot;,&quot;language&quot;:&quot;en-US&quot;,&quot;name&quot;:&quot;Netscape&quot;,&quot;online&quot;:true,&quot;platform&quot;:&quot;MacIntel&quot;,&quot;useragent&quot;:&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0&quot;,&quot;version&quot;:&quot;5.0 (Macintosh)&quot;,&quot;screen&quot;:{&quot;height&quot;:900,&quot;width&quot;:1440,&quot;colorDepth&quot;:30,&quot;pixelDepth&quot;:30,&quot;availHeight&quot;:797,&quot;availWidth&quot;:1440,&quot;orientation&quot;:{&quot;angle&quot;:0,&quot;type&quot;:&quot;landscape&quot;}},&quot;window&quot;:{&quot;height&quot;:713,&quot;width&quot;:1440,&quot;scrollHeight&quot;:713,&quot;ratio&quot;:{&quot;height&quot;:0.89,&quot;width&quot;:1}}}},&quot;url&quot;:{&quot;full&quot;:&quot;https://www.blazedemo.com/&quot;,&quot;info&quot;:{}},&quot;referrer&quot;:{&quot;initial&quot;:&quot;https://www.google.com/&quot;,&quot;full&quot;:&quot;&quot;,&quot;info&quot;:{}},&quot;time&quot;:{&quot;local&quot;:{},&quot;utc&quot;:{}},&quot;keen&quot;:{&quot;timestamp&quot;:&quot;2025-02-23T14:07:06.224Z&quot;,&quot;addons&quot;:[{&quot;name&quot;:&quot;keen:ua_parser&quot;,&quot;input&quot;:{&quot;ua_string&quot;:&quot;user_agent&quot;},&quot;output&quot;:&quot;tech&quot;},{&quot;name&quot;:&quot;keen:url_parser&quot;,&quot;input&quot;:{&quot;url&quot;:&quot;url.full&quot;},&quot;output&quot;:&quot;url.info&quot;},{&quot;name&quot;:&quot;keen:url_parser&quot;,&quot;input&quot;:{&quot;url&quot;:&quot;referrer.full&quot;},&quot;output&quot;:&quot;referrer.info&quot;},{&quot;name&quot;:&quot;keen:date_time_parser&quot;,&quot;input&quot;:{&quot;date_time&quot;:&quot;keen.timestamp&quot;},&quot;output&quot;:&quot;time.utc&quot;},{&quot;name&quot;:&quot;keen:date_time_parser&quot;,&quot;input&quot;:{&quot;date_time&quot;:&quot;local_time_full&quot;},&quot;output&quot;:&quot;time.local&quot;},{&quot;name&quot;:&quot;keen:ip_to_geo&quot;,&quot;input&quot;:{&quot;ip&quot;:&quot;ip_address&quot;,&quot;remove_ip_property&quot;:false},&quot;output&quot;:&quot;geo&quot;}]},&quot;form&quot;:{&quot;action&quot;:&quot;https://www.blazedemo.com/reserve.php&quot;,&quot;fields&quot;:{&quot;fromPort&quot;:&quot;---REDACTED---&quot;,&quot;toPort&quot;:&quot;---REDACTED---&quot;},&quot;method&quot;:&quot;post&quot;},&quot;element&quot;:{&quot;class&quot;:null,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;action&quot;:&quot;reserve.php&quot;,&quot;method&quot;:&quot;post&quot;,&quot;unique_selector&quot;:&quot;form&quot;},&quot;node_name&quot;:&quot;FORM&quot;,&quot;tag_name&quot;:&quot;FORM&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;action&quot;:&quot;https://www.blazedemo.com/reserve.php&quot;,&quot;method&quot;:&quot;post&quot;,&quot;n_parents&quot;:[{&quot;class&quot;:&quot;container&quot;,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;class&quot;:&quot;container&quot;,&quot;unique_selector&quot;:&quot;body &gt; :nth-child(3)&quot;},&quot;node_name&quot;:&quot;DIV&quot;,&quot;tag_name&quot;:&quot;DIV&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:1},{&quot;class&quot;:null,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;unique_selector&quot;:&quot;body&quot;},&quot;node_name&quot;:&quot;BODY&quot;,&quot;tag_name&quot;:&quot;BODY&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:2},{&quot;class&quot;:null,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;lang&quot;:&quot;en&quot;,&quot;unique_selector&quot;:&quot;html&quot;},&quot;node_name&quot;:&quot;HTML&quot;,&quot;tag_name&quot;:&quot;HTML&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:3},{&quot;class&quot;:null,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{},&quot;node_name&quot;:&quot;#document&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:4}],&quot;selector&quot;:&quot;body &gt; div:eq(2) &gt; form&quot;,&quot;text_content&quot;:&quot;---REDACTED---&quot;,&quot;cursor&quot;:&quot;auto&quot;,&quot;x_position&quot;:135,&quot;y_position&quot;:242}}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Sec-Fetch-Mode" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                  <stringProp name="Header.value">no-cors</stringProp>
-                </elementProp>
-                <elementProp name="Referer" elementType="Header">
-                  <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com/</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Site" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                  <stringProp name="Header.value">cross-site</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Language" elementType="Header">
-                  <stringProp name="Header.name">Accept-Language</stringProp>
-                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
-                </elementProp>
-                <elementProp name="Origin" elementType="Header">
-                  <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com</stringProp>
-                </elementProp>
-                <elementProp name="Priority" elementType="Header">
-                  <stringProp name="Header.name">Priority</stringProp>
-                  <stringProp name="Header.value">u=6</stringProp>
-                </elementProp>
-                <elementProp name="Accept" elementType="Header">
-                  <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">*/*</stringProp>
-                </elementProp>
-                <elementProp name="Content-Type" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">text/plain;charset=UTF-8</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Encoding" elementType="Header">
-                  <stringProp name="Header.name">Accept-Encoding</stringProp>
-                  <stringProp name="Header.value">gzip, deflate, br, zstd</stringProp>
-                </elementProp>
-                <elementProp name="User-Agent" elementType="Header">
-                  <stringProp name="Header.name">User-Agent</stringProp>
-                  <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Dest" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
-                  <stringProp name="Header.value">empty</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="49590">204</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">8</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/reserve.php" enabled="true">
-            <boolProp name="HTTPSampler.image_parser">true</boolProp>
-            <stringProp name="HTTPSampler.domain">www.blazedemo.com</stringProp>
+            <stringProp name="HTTPSampler.domain">${BLAZEMETER_URL}</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -651,64 +155,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Sec-Fetch-Mode" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                  <stringProp name="Header.value">navigate</stringProp>
-                </elementProp>
-                <elementProp name="Referer" elementType="Header">
-                  <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com/</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Site" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                  <stringProp name="Header.value">same-origin</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Language" elementType="Header">
-                  <stringProp name="Header.name">Accept-Language</stringProp>
-                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
-                </elementProp>
-                <elementProp name="Origin" elementType="Header">
-                  <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-User" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-User</stringProp>
-                  <stringProp name="Header.value">?1</stringProp>
-                </elementProp>
-                <elementProp name="Priority" elementType="Header">
-                  <stringProp name="Header.name">Priority</stringProp>
-                  <stringProp name="Header.value">u=0, i</stringProp>
-                </elementProp>
-                <elementProp name="Accept" elementType="Header">
-                  <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</stringProp>
-                </elementProp>
-                <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
-                  <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
-                  <stringProp name="Header.value">1</stringProp>
-                </elementProp>
-                <elementProp name="Content-Type" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Encoding" elementType="Header">
-                  <stringProp name="Header.name">Accept-Encoding</stringProp>
-                  <stringProp name="Header.value">gzip, deflate, br, zstd</stringProp>
-                </elementProp>
-                <elementProp name="User-Agent" elementType="Header">
-                  <stringProp name="Header.name">User-Agent</stringProp>
-                  <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Dest" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
-                  <stringProp name="Header.value">document</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="49586">200</stringProp>
               </collectionProp>
@@ -718,9 +165,9 @@
               <intProp name="Assertion.test_type">8</intProp>
             </ResponseAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Text Assertion" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Text Assertion">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="693790639">Flights from Philadelphia to Buenos Aires:</stringProp>
+                <stringProp name="2025320375">Flights from ${fromPort} to ${toPort}:</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
@@ -730,383 +177,14 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/events/pageviews" enabled="true">
-            <boolProp name="HTTPSampler.image_parser">true</boolProp>
-            <stringProp name="HTTPSampler.domain">${DATAPIPE_SERVER_NAME}</stringProp>
-            <stringProp name="HTTPSampler.port">443</stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-            <stringProp name="HTTPSampler.path">/v1/3.0/projects/${PROJECT_ID}/events/pageviews?api_key=${API_KEY}</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;visitor&quot;:{&quot;user_id&quot;:null},&quot;event_uuid&quot;:&quot;177e0a32-ce50-4195-a4b2-c809dbdacbf2&quot;,&quot;iso_time_full&quot;:&quot;2025-02-23T14:07:06.778Z&quot;,&quot;local_time_full&quot;:&quot;Sun Feb 23 2025 15:07:06 GMT+0100 (Central European Standard Time)&quot;,&quot;session&quot;:{&quot;session_uuid&quot;:&quot;4d5e25f8-7eac-42f0-990e-0fca9c3e81fe&quot;},&quot;tracked_by&quot;:&quot;prodperfect-keen-tracking-2.0.23&quot;,&quot;tracker_load_uuid&quot;:&quot;cf223711-ead3-41f1-b462-b9ec24e7a332&quot;,&quot;tracker_loaded_at&quot;:&quot;2025-02-23T14:07:06.778Z&quot;,&quot;prodperfect_test_data&quot;:null,&quot;user&quot;:{&quot;uuid&quot;:&quot;2f6494dd-f23c-4ba5-a3eb-7f03a05dd771&quot;},&quot;page&quot;:{&quot;title&quot;:&quot;BlazeDemo - reserve&quot;,&quot;description&quot;:&quot;BlazeMeter demo app&quot;,&quot;scroll_state&quot;:{&quot;pixel&quot;:713,&quot;pixel_max&quot;:713,&quot;ratio&quot;:1,&quot;ratio_max&quot;:1},&quot;time_on_page&quot;:0,&quot;time_on_page_ms&quot;:0},&quot;ip_address&quot;:&quot;${keen.ip}&quot;,&quot;geo&quot;:{},&quot;user_agent&quot;:&quot;${keen.user_agent}&quot;,&quot;tech&quot;:{&quot;profile&quot;:{&quot;cookies&quot;:true,&quot;codeName&quot;:&quot;Mozilla&quot;,&quot;description&quot;:&quot;BlazeMeter demo app&quot;,&quot;language&quot;:&quot;en-US&quot;,&quot;name&quot;:&quot;Netscape&quot;,&quot;online&quot;:true,&quot;platform&quot;:&quot;MacIntel&quot;,&quot;useragent&quot;:&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0&quot;,&quot;version&quot;:&quot;5.0 (Macintosh)&quot;,&quot;screen&quot;:{&quot;height&quot;:900,&quot;width&quot;:1440,&quot;colorDepth&quot;:30,&quot;pixelDepth&quot;:30,&quot;availHeight&quot;:797,&quot;availWidth&quot;:1440,&quot;orientation&quot;:{&quot;angle&quot;:0,&quot;type&quot;:&quot;landscape&quot;}},&quot;window&quot;:{&quot;height&quot;:713,&quot;width&quot;:1440,&quot;scrollHeight&quot;:713,&quot;ratio&quot;:{&quot;height&quot;:0.89,&quot;width&quot;:1}}}},&quot;url&quot;:{&quot;full&quot;:&quot;https://www.blazedemo.com/reserve.php&quot;,&quot;info&quot;:{}},&quot;referrer&quot;:{&quot;initial&quot;:&quot;https://www.google.com/&quot;,&quot;full&quot;:&quot;https://www.blazedemo.com/&quot;,&quot;info&quot;:{}},&quot;time&quot;:{&quot;local&quot;:{},&quot;utc&quot;:{}},&quot;keen&quot;:{&quot;timestamp&quot;:&quot;2025-02-23T14:07:06.778Z&quot;,&quot;addons&quot;:[{&quot;name&quot;:&quot;keen:ua_parser&quot;,&quot;input&quot;:{&quot;ua_string&quot;:&quot;user_agent&quot;},&quot;output&quot;:&quot;tech&quot;},{&quot;name&quot;:&quot;keen:url_parser&quot;,&quot;input&quot;:{&quot;url&quot;:&quot;url.full&quot;},&quot;output&quot;:&quot;url.info&quot;},{&quot;name&quot;:&quot;keen:url_parser&quot;,&quot;input&quot;:{&quot;url&quot;:&quot;referrer.full&quot;},&quot;output&quot;:&quot;referrer.info&quot;},{&quot;name&quot;:&quot;keen:date_time_parser&quot;,&quot;input&quot;:{&quot;date_time&quot;:&quot;keen.timestamp&quot;},&quot;output&quot;:&quot;time.utc&quot;},{&quot;name&quot;:&quot;keen:date_time_parser&quot;,&quot;input&quot;:{&quot;date_time&quot;:&quot;local_time_full&quot;},&quot;output&quot;:&quot;time.local&quot;},{&quot;name&quot;:&quot;keen:ip_to_geo&quot;,&quot;input&quot;:{&quot;ip&quot;:&quot;ip_address&quot;,&quot;remove_ip_property&quot;:false},&quot;output&quot;:&quot;geo&quot;}]}}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Sec-Fetch-Mode" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                  <stringProp name="Header.value">no-cors</stringProp>
-                </elementProp>
-                <elementProp name="Referer" elementType="Header">
-                  <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com/</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Site" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                  <stringProp name="Header.value">cross-site</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Language" elementType="Header">
-                  <stringProp name="Header.name">Accept-Language</stringProp>
-                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
-                </elementProp>
-                <elementProp name="Origin" elementType="Header">
-                  <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com</stringProp>
-                </elementProp>
-                <elementProp name="Priority" elementType="Header">
-                  <stringProp name="Header.name">Priority</stringProp>
-                  <stringProp name="Header.value">u=6</stringProp>
-                </elementProp>
-                <elementProp name="Accept" elementType="Header">
-                  <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">*/*</stringProp>
-                </elementProp>
-                <elementProp name="Content-Type" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">text/plain;charset=UTF-8</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Encoding" elementType="Header">
-                  <stringProp name="Header.name">Accept-Encoding</stringProp>
-                  <stringProp name="Header.value">gzip, deflate, br, zstd</stringProp>
-                </elementProp>
-                <elementProp name="User-Agent" elementType="Header">
-                  <stringProp name="Header.name">User-Agent</stringProp>
-                  <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Dest" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
-                  <stringProp name="Header.value">empty</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="49590">204</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">8</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-          </hashTree>
-          <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
-            <stringProp name="DurationAssertion.duration">5000</stringProp>
-          </DurationAssertion>
-          <hashTree/>
-          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
-            <boolProp name="ResultCollector.error_logging">false</boolProp>
-            <objProp>
-              <name>saveConfig</name>
-              <value class="SampleSaveConfiguration">
-                <time>true</time>
-                <latency>true</latency>
-                <timestamp>true</timestamp>
-                <success>true</success>
-                <label>true</label>
-                <code>true</code>
-                <message>true</message>
-                <threadName>true</threadName>
-                <dataType>true</dataType>
-                <encoding>false</encoding>
-                <assertions>true</assertions>
-                <subresults>true</subresults>
-                <responseData>false</responseData>
-                <samplerData>false</samplerData>
-                <xml>false</xml>
-                <fieldNames>true</fieldNames>
-                <responseHeaders>false</responseHeaders>
-                <requestHeaders>false</requestHeaders>
-                <responseDataOnError>false</responseDataOnError>
-                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-                <assertionsResultsToSave>0</assertionsResultsToSave>
-                <bytes>true</bytes>
-                <sentBytes>true</sentBytes>
-                <url>true</url>
-                <threadCounts>true</threadCounts>
-                <idleTime>true</idleTime>
-                <connectTime>true</connectTime>
-              </value>
-            </objProp>
-            <stringProp name="filename"></stringProp>
-          </ResultCollector>
-          <hashTree/>
         </hashTree>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC-3-Choose-Ticket" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/events/pageunloads" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="purchase">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
-            <stringProp name="HTTPSampler.domain">${DATAPIPE_SERVER_NAME}</stringProp>
-            <stringProp name="HTTPSampler.port">443</stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-            <stringProp name="HTTPSampler.path">/v1/3.0/projects/${PROJECT_ID}/events/pageunloads?api_key=${API_KEY}</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;visitor&quot;:{&quot;user_id&quot;:null},&quot;event_uuid&quot;:&quot;413b4f61-ccaa-4d63-8460-694a3c8ccbe9&quot;,&quot;iso_time_full&quot;:&quot;2025-02-23T14:09:56.010Z&quot;,&quot;local_time_full&quot;:&quot;Sun Feb 23 2025 15:09:56 GMT+0100 (Central European Standard Time)&quot;,&quot;session&quot;:{&quot;session_uuid&quot;:&quot;4d5e25f8-7eac-42f0-990e-0fca9c3e81fe&quot;},&quot;tracked_by&quot;:&quot;prodperfect-keen-tracking-2.0.23&quot;,&quot;tracker_load_uuid&quot;:&quot;cf223711-ead3-41f1-b462-b9ec24e7a332&quot;,&quot;tracker_loaded_at&quot;:&quot;2025-02-23T14:07:06.778Z&quot;,&quot;prodperfect_test_data&quot;:null,&quot;user&quot;:{&quot;uuid&quot;:&quot;2f6494dd-f23c-4ba5-a3eb-7f03a05dd771&quot;},&quot;page&quot;:{&quot;title&quot;:&quot;BlazeDemo - reserve&quot;,&quot;description&quot;:&quot;BlazeMeter demo app&quot;,&quot;scroll_state&quot;:{&quot;pixel&quot;:713,&quot;pixel_max&quot;:713,&quot;ratio&quot;:1,&quot;ratio_max&quot;:1},&quot;time_on_page&quot;:169,&quot;time_on_page_ms&quot;:169232},&quot;ip_address&quot;:&quot;${keen.ip}&quot;,&quot;geo&quot;:{},&quot;user_agent&quot;:&quot;${keen.user_agent}&quot;,&quot;tech&quot;:{&quot;profile&quot;:{&quot;cookies&quot;:true,&quot;codeName&quot;:&quot;Mozilla&quot;,&quot;description&quot;:&quot;BlazeMeter demo app&quot;,&quot;language&quot;:&quot;en-US&quot;,&quot;name&quot;:&quot;Netscape&quot;,&quot;online&quot;:true,&quot;platform&quot;:&quot;MacIntel&quot;,&quot;useragent&quot;:&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0&quot;,&quot;version&quot;:&quot;5.0 (Macintosh)&quot;,&quot;screen&quot;:{&quot;height&quot;:900,&quot;width&quot;:1440,&quot;colorDepth&quot;:30,&quot;pixelDepth&quot;:30,&quot;availHeight&quot;:797,&quot;availWidth&quot;:1440,&quot;orientation&quot;:{&quot;angle&quot;:0,&quot;type&quot;:&quot;landscape&quot;}},&quot;window&quot;:{&quot;height&quot;:713,&quot;width&quot;:1440,&quot;scrollHeight&quot;:713,&quot;ratio&quot;:{&quot;height&quot;:0.89,&quot;width&quot;:1}}}},&quot;url&quot;:{&quot;full&quot;:&quot;https://www.blazedemo.com/reserve.php&quot;,&quot;info&quot;:{}},&quot;referrer&quot;:{&quot;initial&quot;:&quot;https://www.google.com/&quot;,&quot;full&quot;:&quot;https://www.blazedemo.com/&quot;,&quot;info&quot;:{}},&quot;time&quot;:{&quot;local&quot;:{},&quot;utc&quot;:{}},&quot;keen&quot;:{&quot;timestamp&quot;:&quot;2025-02-23T14:09:56.010Z&quot;,&quot;addons&quot;:[{&quot;name&quot;:&quot;keen:ua_parser&quot;,&quot;input&quot;:{&quot;ua_string&quot;:&quot;user_agent&quot;},&quot;output&quot;:&quot;tech&quot;},{&quot;name&quot;:&quot;keen:url_parser&quot;,&quot;input&quot;:{&quot;url&quot;:&quot;url.full&quot;},&quot;output&quot;:&quot;url.info&quot;},{&quot;name&quot;:&quot;keen:url_parser&quot;,&quot;input&quot;:{&quot;url&quot;:&quot;referrer.full&quot;},&quot;output&quot;:&quot;referrer.info&quot;},{&quot;name&quot;:&quot;keen:date_time_parser&quot;,&quot;input&quot;:{&quot;date_time&quot;:&quot;keen.timestamp&quot;},&quot;output&quot;:&quot;time.utc&quot;},{&quot;name&quot;:&quot;keen:date_time_parser&quot;,&quot;input&quot;:{&quot;date_time&quot;:&quot;local_time_full&quot;},&quot;output&quot;:&quot;time.local&quot;},{&quot;name&quot;:&quot;keen:ip_to_geo&quot;,&quot;input&quot;:{&quot;ip&quot;:&quot;ip_address&quot;,&quot;remove_ip_property&quot;:false},&quot;output&quot;:&quot;geo&quot;}]}}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Sec-Fetch-Mode" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                  <stringProp name="Header.value">no-cors</stringProp>
-                </elementProp>
-                <elementProp name="Referer" elementType="Header">
-                  <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com/</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Site" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                  <stringProp name="Header.value">cross-site</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Language" elementType="Header">
-                  <stringProp name="Header.name">Accept-Language</stringProp>
-                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
-                </elementProp>
-                <elementProp name="Origin" elementType="Header">
-                  <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com</stringProp>
-                </elementProp>
-                <elementProp name="Priority" elementType="Header">
-                  <stringProp name="Header.name">Priority</stringProp>
-                  <stringProp name="Header.value">u=6</stringProp>
-                </elementProp>
-                <elementProp name="Accept" elementType="Header">
-                  <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">*/*</stringProp>
-                </elementProp>
-                <elementProp name="Content-Type" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">text/plain;charset=UTF-8</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Encoding" elementType="Header">
-                  <stringProp name="Header.name">Accept-Encoding</stringProp>
-                  <stringProp name="Header.value">gzip, deflate, br, zstd</stringProp>
-                </elementProp>
-                <elementProp name="User-Agent" elementType="Header">
-                  <stringProp name="Header.name">User-Agent</stringProp>
-                  <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Dest" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
-                  <stringProp name="Header.value">empty</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="49590">204</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">8</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/events/form_submissions" enabled="true">
-            <boolProp name="HTTPSampler.image_parser">true</boolProp>
-            <stringProp name="HTTPSampler.domain">${DATAPIPE_SERVER_NAME}</stringProp>
-            <stringProp name="HTTPSampler.port">443</stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-            <stringProp name="HTTPSampler.path">/v1/3.0/projects/${PROJECT_ID}/events/form_submissions?api_key=${API_KEY}</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;visitor&quot;:{&quot;user_id&quot;:null},&quot;event_uuid&quot;:&quot;b9f17381-583e-48a7-8960-425a41094593&quot;,&quot;iso_time_full&quot;:&quot;2025-02-23T14:09:56.009Z&quot;,&quot;local_time_full&quot;:&quot;Sun Feb 23 2025 15:09:56 GMT+0100 (Central European Standard Time)&quot;,&quot;session&quot;:{&quot;session_uuid&quot;:&quot;4d5e25f8-7eac-42f0-990e-0fca9c3e81fe&quot;},&quot;tracked_by&quot;:&quot;prodperfect-keen-tracking-2.0.23&quot;,&quot;tracker_load_uuid&quot;:&quot;cf223711-ead3-41f1-b462-b9ec24e7a332&quot;,&quot;tracker_loaded_at&quot;:&quot;2025-02-23T14:07:06.778Z&quot;,&quot;prodperfect_test_data&quot;:null,&quot;user&quot;:{&quot;uuid&quot;:&quot;2f6494dd-f23c-4ba5-a3eb-7f03a05dd771&quot;},&quot;page&quot;:{&quot;title&quot;:&quot;BlazeDemo - reserve&quot;,&quot;description&quot;:&quot;BlazeMeter demo app&quot;,&quot;scroll_state&quot;:{&quot;pixel&quot;:713,&quot;pixel_max&quot;:713,&quot;ratio&quot;:1,&quot;ratio_max&quot;:1},&quot;time_on_page&quot;:169,&quot;time_on_page_ms&quot;:169231},&quot;ip_address&quot;:&quot;${keen.ip}&quot;,&quot;geo&quot;:{},&quot;user_agent&quot;:&quot;${keen.user_agent}&quot;,&quot;tech&quot;:{&quot;profile&quot;:{&quot;cookies&quot;:true,&quot;codeName&quot;:&quot;Mozilla&quot;,&quot;description&quot;:&quot;BlazeMeter demo app&quot;,&quot;language&quot;:&quot;en-US&quot;,&quot;name&quot;:&quot;Netscape&quot;,&quot;online&quot;:true,&quot;platform&quot;:&quot;MacIntel&quot;,&quot;useragent&quot;:&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0&quot;,&quot;version&quot;:&quot;5.0 (Macintosh)&quot;,&quot;screen&quot;:{&quot;height&quot;:900,&quot;width&quot;:1440,&quot;colorDepth&quot;:30,&quot;pixelDepth&quot;:30,&quot;availHeight&quot;:797,&quot;availWidth&quot;:1440,&quot;orientation&quot;:{&quot;angle&quot;:0,&quot;type&quot;:&quot;landscape&quot;}},&quot;window&quot;:{&quot;height&quot;:713,&quot;width&quot;:1440,&quot;scrollHeight&quot;:713,&quot;ratio&quot;:{&quot;height&quot;:0.89,&quot;width&quot;:1}}}},&quot;url&quot;:{&quot;full&quot;:&quot;https://www.blazedemo.com/reserve.php&quot;,&quot;info&quot;:{}},&quot;referrer&quot;:{&quot;initial&quot;:&quot;https://www.google.com/&quot;,&quot;full&quot;:&quot;https://www.blazedemo.com/&quot;,&quot;info&quot;:{}},&quot;time&quot;:{&quot;local&quot;:{},&quot;utc&quot;:{}},&quot;keen&quot;:{&quot;timestamp&quot;:&quot;2025-02-23T14:09:56.009Z&quot;,&quot;addons&quot;:[{&quot;name&quot;:&quot;keen:ua_parser&quot;,&quot;input&quot;:{&quot;ua_string&quot;:&quot;user_agent&quot;},&quot;output&quot;:&quot;tech&quot;},{&quot;name&quot;:&quot;keen:url_parser&quot;,&quot;input&quot;:{&quot;url&quot;:&quot;url.full&quot;},&quot;output&quot;:&quot;url.info&quot;},{&quot;name&quot;:&quot;keen:url_parser&quot;,&quot;input&quot;:{&quot;url&quot;:&quot;referrer.full&quot;},&quot;output&quot;:&quot;referrer.info&quot;},{&quot;name&quot;:&quot;keen:date_time_parser&quot;,&quot;input&quot;:{&quot;date_time&quot;:&quot;keen.timestamp&quot;},&quot;output&quot;:&quot;time.utc&quot;},{&quot;name&quot;:&quot;keen:date_time_parser&quot;,&quot;input&quot;:{&quot;date_time&quot;:&quot;local_time_full&quot;},&quot;output&quot;:&quot;time.local&quot;},{&quot;name&quot;:&quot;keen:ip_to_geo&quot;,&quot;input&quot;:{&quot;ip&quot;:&quot;ip_address&quot;,&quot;remove_ip_property&quot;:false},&quot;output&quot;:&quot;geo&quot;}]},&quot;form&quot;:{&quot;action&quot;:&quot;https://www.blazedemo.com/purchase.php&quot;,&quot;fields&quot;:{&quot;flight&quot;:&quot;---REDACTED---&quot;,&quot;price&quot;:&quot;---REDACTED---&quot;,&quot;airline&quot;:&quot;---REDACTED---&quot;,&quot;fromPort&quot;:&quot;---REDACTED---&quot;,&quot;toPort&quot;:&quot;---REDACTED---&quot;},&quot;method&quot;:&quot;post&quot;},&quot;element&quot;:{&quot;class&quot;:null,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:&quot;VA43&quot;,&quot;all_attrs&quot;:{&quot;name&quot;:&quot;VA43&quot;,&quot;method&quot;:&quot;post&quot;,&quot;action&quot;:&quot;purchase.php&quot;,&quot;unique_selector&quot;:&quot;:nth-child(1) &gt; form&quot;},&quot;node_name&quot;:&quot;FORM&quot;,&quot;tag_name&quot;:&quot;FORM&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;action&quot;:&quot;https://www.blazedemo.com/purchase.php&quot;,&quot;method&quot;:&quot;post&quot;,&quot;n_parents&quot;:[{&quot;class&quot;:null,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;unique_selector&quot;:&quot;tbody &gt; :nth-child(1)&quot;},&quot;node_name&quot;:&quot;TR&quot;,&quot;tag_name&quot;:&quot;TR&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:1},{&quot;class&quot;:null,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;unique_selector&quot;:&quot;tbody&quot;},&quot;node_name&quot;:&quot;TBODY&quot;,&quot;tag_name&quot;:&quot;TBODY&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:2},{&quot;class&quot;:&quot;table&quot;,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;class&quot;:&quot;table&quot;,&quot;unique_selector&quot;:&quot;.table&quot;},&quot;node_name&quot;:&quot;TABLE&quot;,&quot;tag_name&quot;:&quot;TABLE&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:3},{&quot;class&quot;:&quot;container&quot;,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;class&quot;:&quot;container&quot;,&quot;unique_selector&quot;:&quot;body &gt; :nth-child(2)&quot;},&quot;node_name&quot;:&quot;DIV&quot;,&quot;tag_name&quot;:&quot;DIV&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:4},{&quot;class&quot;:null,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;unique_selector&quot;:&quot;body&quot;},&quot;node_name&quot;:&quot;BODY&quot;,&quot;tag_name&quot;:&quot;BODY&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:5}],&quot;selector&quot;:&quot;body &gt; div:eq(1) &gt; table &gt; tbody &gt; tr:eq(0) &gt; form&quot;,&quot;text_content&quot;:null,&quot;cursor&quot;:&quot;auto&quot;,&quot;x_position&quot;:null,&quot;y_position&quot;:null}}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Sec-Fetch-Mode" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                  <stringProp name="Header.value">no-cors</stringProp>
-                </elementProp>
-                <elementProp name="Referer" elementType="Header">
-                  <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com/</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Site" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                  <stringProp name="Header.value">cross-site</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Language" elementType="Header">
-                  <stringProp name="Header.name">Accept-Language</stringProp>
-                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
-                </elementProp>
-                <elementProp name="Origin" elementType="Header">
-                  <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com</stringProp>
-                </elementProp>
-                <elementProp name="Priority" elementType="Header">
-                  <stringProp name="Header.name">Priority</stringProp>
-                  <stringProp name="Header.value">u=6</stringProp>
-                </elementProp>
-                <elementProp name="Accept" elementType="Header">
-                  <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">*/*</stringProp>
-                </elementProp>
-                <elementProp name="Content-Type" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">text/plain;charset=UTF-8</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Encoding" elementType="Header">
-                  <stringProp name="Header.name">Accept-Encoding</stringProp>
-                  <stringProp name="Header.value">gzip, deflate, br, zstd</stringProp>
-                </elementProp>
-                <elementProp name="User-Agent" elementType="Header">
-                  <stringProp name="Header.name">User-Agent</stringProp>
-                  <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Dest" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
-                  <stringProp name="Header.value">empty</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="49590">204</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">8</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/events/clicks">
-            <boolProp name="HTTPSampler.image_parser">true</boolProp>
-            <stringProp name="HTTPSampler.domain">${DATAPIPE_SERVER_NAME}</stringProp>
-            <stringProp name="HTTPSampler.port">443</stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-            <stringProp name="HTTPSampler.path">/v1/3.0/projects/${PROJECT_ID}/events/clicks?api_key=${API_KEY}</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;visitor&quot;:{&quot;user_id&quot;:null},&quot;event_uuid&quot;:&quot;23c81d0b-3484-4c6c-b819-222e95a73b67&quot;,&quot;iso_time_full&quot;:&quot;2025-02-23T14:09:56.007Z&quot;,&quot;local_time_full&quot;:&quot;Sun Feb 23 2025 15:09:56 GMT+0100 (Central European Standard Time)&quot;,&quot;session&quot;:{&quot;session_uuid&quot;:&quot;4d5e25f8-7eac-42f0-990e-0fca9c3e81fe&quot;},&quot;tracked_by&quot;:&quot;prodperfect-keen-tracking-2.0.23&quot;,&quot;tracker_load_uuid&quot;:&quot;cf223711-ead3-41f1-b462-b9ec24e7a332&quot;,&quot;tracker_loaded_at&quot;:&quot;2025-02-23T14:07:06.778Z&quot;,&quot;prodperfect_test_data&quot;:null,&quot;user&quot;:{&quot;uuid&quot;:&quot;2f6494dd-f23c-4ba5-a3eb-7f03a05dd771&quot;},&quot;page&quot;:{&quot;title&quot;:&quot;BlazeDemo - reserve&quot;,&quot;description&quot;:&quot;BlazeMeter demo app&quot;,&quot;scroll_state&quot;:{&quot;pixel&quot;:713,&quot;pixel_max&quot;:713,&quot;ratio&quot;:1,&quot;ratio_max&quot;:1},&quot;time_on_page&quot;:169,&quot;time_on_page_ms&quot;:169229},&quot;ip_address&quot;:&quot;${keen.ip}&quot;,&quot;geo&quot;:{},&quot;user_agent&quot;:&quot;${keen.user_agent}&quot;,&quot;tech&quot;:{&quot;profile&quot;:{&quot;cookies&quot;:true,&quot;codeName&quot;:&quot;Mozilla&quot;,&quot;description&quot;:&quot;BlazeMeter demo app&quot;,&quot;language&quot;:&quot;en-US&quot;,&quot;name&quot;:&quot;Netscape&quot;,&quot;online&quot;:true,&quot;platform&quot;:&quot;MacIntel&quot;,&quot;useragent&quot;:&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0&quot;,&quot;version&quot;:&quot;5.0 (Macintosh)&quot;,&quot;screen&quot;:{&quot;height&quot;:900,&quot;width&quot;:1440,&quot;colorDepth&quot;:30,&quot;pixelDepth&quot;:30,&quot;availHeight&quot;:797,&quot;availWidth&quot;:1440,&quot;orientation&quot;:{&quot;angle&quot;:0,&quot;type&quot;:&quot;landscape&quot;}},&quot;window&quot;:{&quot;height&quot;:713,&quot;width&quot;:1440,&quot;scrollHeight&quot;:713,&quot;ratio&quot;:{&quot;height&quot;:0.89,&quot;width&quot;:1}}}},&quot;url&quot;:{&quot;full&quot;:&quot;https://www.blazedemo.com/reserve.php&quot;,&quot;info&quot;:{}},&quot;referrer&quot;:{&quot;initial&quot;:&quot;https://www.google.com/&quot;,&quot;full&quot;:&quot;https://www.blazedemo.com/&quot;,&quot;info&quot;:{}},&quot;time&quot;:{&quot;local&quot;:{},&quot;utc&quot;:{}},&quot;keen&quot;:{&quot;timestamp&quot;:&quot;2025-02-23T14:09:56.007Z&quot;,&quot;addons&quot;:[{&quot;name&quot;:&quot;keen:ua_parser&quot;,&quot;input&quot;:{&quot;ua_string&quot;:&quot;user_agent&quot;},&quot;output&quot;:&quot;tech&quot;},{&quot;name&quot;:&quot;keen:url_parser&quot;,&quot;input&quot;:{&quot;url&quot;:&quot;url.full&quot;},&quot;output&quot;:&quot;url.info&quot;},{&quot;name&quot;:&quot;keen:url_parser&quot;,&quot;input&quot;:{&quot;url&quot;:&quot;referrer.full&quot;},&quot;output&quot;:&quot;referrer.info&quot;},{&quot;name&quot;:&quot;keen:date_time_parser&quot;,&quot;input&quot;:{&quot;date_time&quot;:&quot;keen.timestamp&quot;},&quot;output&quot;:&quot;time.utc&quot;},{&quot;name&quot;:&quot;keen:date_time_parser&quot;,&quot;input&quot;:{&quot;date_time&quot;:&quot;local_time_full&quot;},&quot;output&quot;:&quot;time.local&quot;},{&quot;name&quot;:&quot;keen:ip_to_geo&quot;,&quot;input&quot;:{&quot;ip&quot;:&quot;ip_address&quot;,&quot;remove_ip_property&quot;:false},&quot;output&quot;:&quot;geo&quot;}]},&quot;element&quot;:{&quot;class&quot;:&quot;btn btn-small&quot;,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;type&quot;:&quot;submit&quot;,&quot;class&quot;:&quot;btn btn-small&quot;,&quot;unique_selector&quot;:&quot;:nth-child(1) &gt; :nth-child(2) &gt; .btn&quot;},&quot;node_name&quot;:&quot;INPUT&quot;,&quot;tag_name&quot;:&quot;INPUT&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:&quot;submit&quot;,&quot;n_parents&quot;:[{&quot;class&quot;:null,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;unique_selector&quot;:&quot;tbody &gt; :nth-child(1) &gt; :nth-child(2)&quot;},&quot;node_name&quot;:&quot;TD&quot;,&quot;tag_name&quot;:&quot;TD&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:1},{&quot;class&quot;:null,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;unique_selector&quot;:&quot;tbody &gt; :nth-child(1)&quot;},&quot;node_name&quot;:&quot;TR&quot;,&quot;tag_name&quot;:&quot;TR&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:2},{&quot;class&quot;:null,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;unique_selector&quot;:&quot;tbody&quot;},&quot;node_name&quot;:&quot;TBODY&quot;,&quot;tag_name&quot;:&quot;TBODY&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:3},{&quot;class&quot;:&quot;table&quot;,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;class&quot;:&quot;table&quot;,&quot;unique_selector&quot;:&quot;.table&quot;},&quot;node_name&quot;:&quot;TABLE&quot;,&quot;tag_name&quot;:&quot;TABLE&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:4},{&quot;class&quot;:&quot;container&quot;,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;class&quot;:&quot;container&quot;,&quot;unique_selector&quot;:&quot;body &gt; :nth-child(2)&quot;},&quot;node_name&quot;:&quot;DIV&quot;,&quot;tag_name&quot;:&quot;DIV&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:5},{&quot;class&quot;:null,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;unique_selector&quot;:&quot;body&quot;},&quot;node_name&quot;:&quot;BODY&quot;,&quot;tag_name&quot;:&quot;BODY&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:6}],&quot;selector&quot;:&quot;body &gt; div:eq(1) &gt; table &gt; tbody &gt; tr:eq(0) &gt; td:eq(0) &gt; input&quot;,&quot;text_content&quot;:null,&quot;cursor&quot;:&quot;pointer&quot;,&quot;x_position&quot;:8,&quot;y_position&quot;:8}}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Sec-Fetch-Mode" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                  <stringProp name="Header.value">no-cors</stringProp>
-                </elementProp>
-                <elementProp name="Referer" elementType="Header">
-                  <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com/</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Site" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                  <stringProp name="Header.value">cross-site</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Language" elementType="Header">
-                  <stringProp name="Header.name">Accept-Language</stringProp>
-                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
-                </elementProp>
-                <elementProp name="Origin" elementType="Header">
-                  <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com</stringProp>
-                </elementProp>
-                <elementProp name="Priority" elementType="Header">
-                  <stringProp name="Header.name">Priority</stringProp>
-                  <stringProp name="Header.value">u=6</stringProp>
-                </elementProp>
-                <elementProp name="Accept" elementType="Header">
-                  <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">*/*</stringProp>
-                </elementProp>
-                <elementProp name="Content-Type" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">text/plain;charset=UTF-8</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Encoding" elementType="Header">
-                  <stringProp name="Header.name">Accept-Encoding</stringProp>
-                  <stringProp name="Header.value">gzip, deflate, br, zstd</stringProp>
-                </elementProp>
-                <elementProp name="User-Agent" elementType="Header">
-                  <stringProp name="Header.name">User-Agent</stringProp>
-                  <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Dest" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
-                  <stringProp name="Header.value">empty</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="49590">204</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">8</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/purchase.php" enabled="true">
-            <boolProp name="HTTPSampler.image_parser">true</boolProp>
-            <stringProp name="HTTPSampler.domain">www.blazedemo.com</stringProp>
+            <stringProp name="HTTPSampler.domain">${BLAZEMETER_URL}</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -1126,64 +204,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Sec-Fetch-Mode" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                  <stringProp name="Header.value">navigate</stringProp>
-                </elementProp>
-                <elementProp name="Referer" elementType="Header">
-                  <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com/reserve.php</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Site" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                  <stringProp name="Header.value">same-origin</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Language" elementType="Header">
-                  <stringProp name="Header.name">Accept-Language</stringProp>
-                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
-                </elementProp>
-                <elementProp name="Origin" elementType="Header">
-                  <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-User" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-User</stringProp>
-                  <stringProp name="Header.value">?1</stringProp>
-                </elementProp>
-                <elementProp name="Priority" elementType="Header">
-                  <stringProp name="Header.name">Priority</stringProp>
-                  <stringProp name="Header.value">u=0, i</stringProp>
-                </elementProp>
-                <elementProp name="Accept" elementType="Header">
-                  <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</stringProp>
-                </elementProp>
-                <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
-                  <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
-                  <stringProp name="Header.value">1</stringProp>
-                </elementProp>
-                <elementProp name="Content-Type" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Encoding" elementType="Header">
-                  <stringProp name="Header.name">Accept-Encoding</stringProp>
-                  <stringProp name="Header.value">gzip, deflate, br, zstd</stringProp>
-                </elementProp>
-                <elementProp name="User-Agent" elementType="Header">
-                  <stringProp name="Header.name">User-Agent</stringProp>
-                  <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Dest" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
-                  <stringProp name="Header.value">document</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Text Assertion" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Text Assertion">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="1648009195">Remember me</stringProp>
               </collectionProp>
@@ -1193,7 +214,7 @@
               <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="49586">200</stringProp>
               </collectionProp>
@@ -1204,301 +225,14 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/events/pageviews" enabled="true">
-            <boolProp name="HTTPSampler.image_parser">true</boolProp>
-            <stringProp name="HTTPSampler.domain">${DATAPIPE_SERVER_NAME}</stringProp>
-            <stringProp name="HTTPSampler.port">443</stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-            <stringProp name="HTTPSampler.path">/v1/3.0/projects/${PROJECT_ID}/events/pageviews?api_key=${API_KEY}</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;visitor&quot;:{&quot;user_id&quot;:null},&quot;event_uuid&quot;:&quot;e9a4669a-9852-496c-b389-a9de79845bb3&quot;,&quot;iso_time_full&quot;:&quot;2025-02-23T14:09:56.573Z&quot;,&quot;local_time_full&quot;:&quot;Sun Feb 23 2025 15:09:56 GMT+0100 (Central European Standard Time)&quot;,&quot;session&quot;:{&quot;session_uuid&quot;:&quot;4d5e25f8-7eac-42f0-990e-0fca9c3e81fe&quot;},&quot;tracked_by&quot;:&quot;prodperfect-keen-tracking-2.0.23&quot;,&quot;tracker_load_uuid&quot;:&quot;e0a4c2e1-1ba5-4d55-8ca2-07d310644acd&quot;,&quot;tracker_loaded_at&quot;:&quot;2025-02-23T14:09:56.572Z&quot;,&quot;prodperfect_test_data&quot;:null,&quot;user&quot;:{&quot;uuid&quot;:&quot;2f6494dd-f23c-4ba5-a3eb-7f03a05dd771&quot;},&quot;page&quot;:{&quot;title&quot;:&quot;BlazeDemo Purchase&quot;,&quot;description&quot;:&quot;BlazeMeter demo app&quot;,&quot;scroll_state&quot;:{&quot;pixel&quot;:713,&quot;pixel_max&quot;:713,&quot;ratio&quot;:0.61,&quot;ratio_max&quot;:0.61},&quot;time_on_page&quot;:0,&quot;time_on_page_ms&quot;:1},&quot;ip_address&quot;:&quot;${keen.ip}&quot;,&quot;geo&quot;:{},&quot;user_agent&quot;:&quot;${keen.user_agent}&quot;,&quot;tech&quot;:{&quot;profile&quot;:{&quot;cookies&quot;:true,&quot;codeName&quot;:&quot;Mozilla&quot;,&quot;description&quot;:&quot;BlazeMeter demo app&quot;,&quot;language&quot;:&quot;en-US&quot;,&quot;name&quot;:&quot;Netscape&quot;,&quot;online&quot;:true,&quot;platform&quot;:&quot;MacIntel&quot;,&quot;useragent&quot;:&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0&quot;,&quot;version&quot;:&quot;5.0 (Macintosh)&quot;,&quot;screen&quot;:{&quot;height&quot;:900,&quot;width&quot;:1440,&quot;colorDepth&quot;:30,&quot;pixelDepth&quot;:30,&quot;availHeight&quot;:797,&quot;availWidth&quot;:1440,&quot;orientation&quot;:{&quot;angle&quot;:0,&quot;type&quot;:&quot;landscape&quot;}},&quot;window&quot;:{&quot;height&quot;:713,&quot;width&quot;:1440,&quot;scrollHeight&quot;:1164,&quot;ratio&quot;:{&quot;height&quot;:0.89,&quot;width&quot;:1}}}},&quot;url&quot;:{&quot;full&quot;:&quot;https://www.blazedemo.com/purchase.php&quot;,&quot;info&quot;:{}},&quot;referrer&quot;:{&quot;initial&quot;:&quot;https://www.google.com/&quot;,&quot;full&quot;:&quot;https://www.blazedemo.com/reserve.php&quot;,&quot;info&quot;:{}},&quot;time&quot;:{&quot;local&quot;:{},&quot;utc&quot;:{}},&quot;keen&quot;:{&quot;timestamp&quot;:&quot;2025-02-23T14:09:56.573Z&quot;,&quot;addons&quot;:[{&quot;name&quot;:&quot;keen:ua_parser&quot;,&quot;input&quot;:{&quot;ua_string&quot;:&quot;user_agent&quot;},&quot;output&quot;:&quot;tech&quot;},{&quot;name&quot;:&quot;keen:url_parser&quot;,&quot;input&quot;:{&quot;url&quot;:&quot;url.full&quot;},&quot;output&quot;:&quot;url.info&quot;},{&quot;name&quot;:&quot;keen:url_parser&quot;,&quot;input&quot;:{&quot;url&quot;:&quot;referrer.full&quot;},&quot;output&quot;:&quot;referrer.info&quot;},{&quot;name&quot;:&quot;keen:date_time_parser&quot;,&quot;input&quot;:{&quot;date_time&quot;:&quot;keen.timestamp&quot;},&quot;output&quot;:&quot;time.utc&quot;},{&quot;name&quot;:&quot;keen:date_time_parser&quot;,&quot;input&quot;:{&quot;date_time&quot;:&quot;local_time_full&quot;},&quot;output&quot;:&quot;time.local&quot;},{&quot;name&quot;:&quot;keen:ip_to_geo&quot;,&quot;input&quot;:{&quot;ip&quot;:&quot;ip_address&quot;,&quot;remove_ip_property&quot;:false},&quot;output&quot;:&quot;geo&quot;}]}}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Sec-Fetch-Mode" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                  <stringProp name="Header.value">no-cors</stringProp>
-                </elementProp>
-                <elementProp name="Referer" elementType="Header">
-                  <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com/</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Site" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                  <stringProp name="Header.value">cross-site</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Language" elementType="Header">
-                  <stringProp name="Header.name">Accept-Language</stringProp>
-                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
-                </elementProp>
-                <elementProp name="Origin" elementType="Header">
-                  <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com</stringProp>
-                </elementProp>
-                <elementProp name="Priority" elementType="Header">
-                  <stringProp name="Header.name">Priority</stringProp>
-                  <stringProp name="Header.value">u=6</stringProp>
-                </elementProp>
-                <elementProp name="Accept" elementType="Header">
-                  <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">*/*</stringProp>
-                </elementProp>
-                <elementProp name="Content-Type" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">text/plain;charset=UTF-8</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Encoding" elementType="Header">
-                  <stringProp name="Header.name">Accept-Encoding</stringProp>
-                  <stringProp name="Header.value">gzip, deflate, br, zstd</stringProp>
-                </elementProp>
-                <elementProp name="User-Agent" elementType="Header">
-                  <stringProp name="Header.name">User-Agent</stringProp>
-                  <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Dest" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
-                  <stringProp name="Header.value">empty</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="49590">204</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">8</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-          </hashTree>
-          <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
-            <stringProp name="DurationAssertion.duration">5000</stringProp>
-          </DurationAssertion>
-          <hashTree/>
-          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
-            <boolProp name="ResultCollector.error_logging">false</boolProp>
-            <objProp>
-              <name>saveConfig</name>
-              <value class="SampleSaveConfiguration">
-                <time>true</time>
-                <latency>true</latency>
-                <timestamp>true</timestamp>
-                <success>true</success>
-                <label>true</label>
-                <code>true</code>
-                <message>true</message>
-                <threadName>true</threadName>
-                <dataType>true</dataType>
-                <encoding>false</encoding>
-                <assertions>true</assertions>
-                <subresults>true</subresults>
-                <responseData>false</responseData>
-                <samplerData>false</samplerData>
-                <xml>false</xml>
-                <fieldNames>true</fieldNames>
-                <responseHeaders>false</responseHeaders>
-                <requestHeaders>false</requestHeaders>
-                <responseDataOnError>false</responseDataOnError>
-                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-                <assertionsResultsToSave>0</assertionsResultsToSave>
-                <bytes>true</bytes>
-                <sentBytes>true</sentBytes>
-                <url>true</url>
-                <threadCounts>true</threadCounts>
-                <idleTime>true</idleTime>
-                <connectTime>true</connectTime>
-              </value>
-            </objProp>
-            <stringProp name="filename"></stringProp>
-          </ResultCollector>
-          <hashTree/>
         </hashTree>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TC-4-Purchase-Confirmation" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/events/clicks" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="confirmation">
             <boolProp name="HTTPSampler.image_parser">true</boolProp>
-            <stringProp name="HTTPSampler.domain">${DATAPIPE_SERVER_NAME}</stringProp>
-            <stringProp name="HTTPSampler.port">443</stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-            <stringProp name="HTTPSampler.path">/v1/3.0/projects/${PROJECT_ID}/events/clicks?api_key=${API_KEY}</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;visitor&quot;:{&quot;user_id&quot;:null},&quot;event_uuid&quot;:&quot;b699dd39-2789-4b0a-a947-6d4938cf1751&quot;,&quot;iso_time_full&quot;:&quot;2025-02-23T14:12:55.133Z&quot;,&quot;local_time_full&quot;:&quot;Sun Feb 23 2025 15:12:55 GMT+0100 (Central European Standard Time)&quot;,&quot;session&quot;:{&quot;session_uuid&quot;:&quot;4d5e25f8-7eac-42f0-990e-0fca9c3e81fe&quot;},&quot;tracked_by&quot;:&quot;prodperfect-keen-tracking-2.0.23&quot;,&quot;tracker_load_uuid&quot;:&quot;e0a4c2e1-1ba5-4d55-8ca2-07d310644acd&quot;,&quot;tracker_loaded_at&quot;:&quot;2025-02-23T14:09:56.572Z&quot;,&quot;prodperfect_test_data&quot;:null,&quot;user&quot;:{&quot;uuid&quot;:&quot;2f6494dd-f23c-4ba5-a3eb-7f03a05dd771&quot;},&quot;page&quot;:{&quot;title&quot;:&quot;BlazeDemo Purchase&quot;,&quot;description&quot;:&quot;BlazeMeter demo app&quot;,&quot;scroll_state&quot;:{&quot;pixel&quot;:1164.5,&quot;pixel_max&quot;:1164.5,&quot;ratio&quot;:1,&quot;ratio_max&quot;:1},&quot;time_on_page&quot;:179,&quot;time_on_page_ms&quot;:178561},&quot;ip_address&quot;:&quot;${keen.ip}&quot;,&quot;geo&quot;:{},&quot;user_agent&quot;:&quot;${keen.user_agent}&quot;,&quot;tech&quot;:{&quot;profile&quot;:{&quot;cookies&quot;:true,&quot;codeName&quot;:&quot;Mozilla&quot;,&quot;description&quot;:&quot;BlazeMeter demo app&quot;,&quot;language&quot;:&quot;en-US&quot;,&quot;name&quot;:&quot;Netscape&quot;,&quot;online&quot;:true,&quot;platform&quot;:&quot;MacIntel&quot;,&quot;useragent&quot;:&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0&quot;,&quot;version&quot;:&quot;5.0 (Macintosh)&quot;,&quot;screen&quot;:{&quot;height&quot;:900,&quot;width&quot;:1440,&quot;colorDepth&quot;:30,&quot;pixelDepth&quot;:30,&quot;availHeight&quot;:797,&quot;availWidth&quot;:1440,&quot;orientation&quot;:{&quot;angle&quot;:0,&quot;type&quot;:&quot;landscape&quot;}},&quot;window&quot;:{&quot;height&quot;:713,&quot;width&quot;:1440,&quot;scrollHeight&quot;:1164,&quot;ratio&quot;:{&quot;height&quot;:0.89,&quot;width&quot;:1}}}},&quot;url&quot;:{&quot;full&quot;:&quot;https://www.blazedemo.com/purchase.php&quot;,&quot;info&quot;:{}},&quot;referrer&quot;:{&quot;initial&quot;:&quot;https://www.google.com/&quot;,&quot;full&quot;:&quot;https://www.blazedemo.com/reserve.php&quot;,&quot;info&quot;:{}},&quot;time&quot;:{&quot;local&quot;:{},&quot;utc&quot;:{}},&quot;keen&quot;:{&quot;timestamp&quot;:&quot;2025-02-23T14:12:55.133Z&quot;,&quot;addons&quot;:[{&quot;name&quot;:&quot;keen:ua_parser&quot;,&quot;input&quot;:{&quot;ua_string&quot;:&quot;user_agent&quot;},&quot;output&quot;:&quot;tech&quot;},{&quot;name&quot;:&quot;keen:url_parser&quot;,&quot;input&quot;:{&quot;url&quot;:&quot;url.full&quot;},&quot;output&quot;:&quot;url.info&quot;},{&quot;name&quot;:&quot;keen:url_parser&quot;,&quot;input&quot;:{&quot;url&quot;:&quot;referrer.full&quot;},&quot;output&quot;:&quot;referrer.info&quot;},{&quot;name&quot;:&quot;keen:date_time_parser&quot;,&quot;input&quot;:{&quot;date_time&quot;:&quot;keen.timestamp&quot;},&quot;output&quot;:&quot;time.utc&quot;},{&quot;name&quot;:&quot;keen:date_time_parser&quot;,&quot;input&quot;:{&quot;date_time&quot;:&quot;local_time_full&quot;},&quot;output&quot;:&quot;time.local&quot;},{&quot;name&quot;:&quot;keen:ip_to_geo&quot;,&quot;input&quot;:{&quot;ip&quot;:&quot;ip_address&quot;,&quot;remove_ip_property&quot;:false},&quot;output&quot;:&quot;geo&quot;}]},&quot;element&quot;:{&quot;class&quot;:&quot;btn btn-primary&quot;,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;class&quot;:&quot;btn btn-primary&quot;,&quot;type&quot;:&quot;submit&quot;,&quot;unique_selector&quot;:&quot;.controls &gt; .btn&quot;},&quot;node_name&quot;:&quot;INPUT&quot;,&quot;tag_name&quot;:&quot;INPUT&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:&quot;submit&quot;,&quot;n_parents&quot;:[{&quot;class&quot;:&quot;controls&quot;,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;class&quot;:&quot;controls&quot;,&quot;unique_selector&quot;:&quot;:nth-child(12) &gt; .controls&quot;},&quot;node_name&quot;:&quot;DIV&quot;,&quot;tag_name&quot;:&quot;DIV&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:1},{&quot;class&quot;:&quot;control-group&quot;,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;class&quot;:&quot;control-group&quot;,&quot;unique_selector&quot;:&quot;:nth-child(12)&quot;},&quot;node_name&quot;:&quot;DIV&quot;,&quot;tag_name&quot;:&quot;DIV&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:2},{&quot;class&quot;:null,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;method&quot;:&quot;POST&quot;,&quot;action&quot;:&quot;https://www.blazedemo.com/confirmation.php&quot;,&quot;accept-charset&quot;:&quot;UTF-8&quot;,&quot;unique_selector&quot;:&quot;form&quot;},&quot;node_name&quot;:&quot;FORM&quot;,&quot;tag_name&quot;:&quot;FORM&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:3},{&quot;class&quot;:&quot;container&quot;,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;class&quot;:&quot;container&quot;,&quot;unique_selector&quot;:&quot;body &gt; :nth-child(2)&quot;},&quot;node_name&quot;:&quot;DIV&quot;,&quot;tag_name&quot;:&quot;DIV&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:4},{&quot;class&quot;:null,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;unique_selector&quot;:&quot;body&quot;},&quot;node_name&quot;:&quot;BODY&quot;,&quot;tag_name&quot;:&quot;BODY&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:5},{&quot;class&quot;:null,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;lang&quot;:&quot;en&quot;,&quot;unique_selector&quot;:&quot;html&quot;},&quot;node_name&quot;:&quot;HTML&quot;,&quot;tag_name&quot;:&quot;HTML&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:6}],&quot;selector&quot;:&quot;body &gt; div:eq(1) &gt; form &gt; div:eq(10) &gt; div &gt; input&quot;,&quot;text_content&quot;:null,&quot;cursor&quot;:&quot;pointer&quot;,&quot;x_position&quot;:135,&quot;y_position&quot;:1114}}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Sec-Fetch-Mode" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                  <stringProp name="Header.value">no-cors</stringProp>
-                </elementProp>
-                <elementProp name="Referer" elementType="Header">
-                  <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com/</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Site" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                  <stringProp name="Header.value">cross-site</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Language" elementType="Header">
-                  <stringProp name="Header.name">Accept-Language</stringProp>
-                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
-                </elementProp>
-                <elementProp name="Origin" elementType="Header">
-                  <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com</stringProp>
-                </elementProp>
-                <elementProp name="Priority" elementType="Header">
-                  <stringProp name="Header.name">Priority</stringProp>
-                  <stringProp name="Header.value">u=6</stringProp>
-                </elementProp>
-                <elementProp name="Accept" elementType="Header">
-                  <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">*/*</stringProp>
-                </elementProp>
-                <elementProp name="Content-Type" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">text/plain;charset=UTF-8</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Encoding" elementType="Header">
-                  <stringProp name="Header.name">Accept-Encoding</stringProp>
-                  <stringProp name="Header.value">gzip, deflate, br, zstd</stringProp>
-                </elementProp>
-                <elementProp name="User-Agent" elementType="Header">
-                  <stringProp name="Header.name">User-Agent</stringProp>
-                  <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Dest" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
-                  <stringProp name="Header.value">empty</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="49590">204</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">8</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/events/pageunloads" enabled="true">
-            <boolProp name="HTTPSampler.image_parser">true</boolProp>
-            <stringProp name="HTTPSampler.domain">${DATAPIPE_SERVER_NAME}</stringProp>
-            <stringProp name="HTTPSampler.port">443</stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-            <stringProp name="HTTPSampler.path">/v1/3.0/projects/${PROJECT_ID}/events/pageunloads?api_key=${API_KEY}</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;visitor&quot;:{&quot;user_id&quot;:null},&quot;event_uuid&quot;:&quot;dbeda603-7211-4087-9bf3-6ba8c834e4e1&quot;,&quot;iso_time_full&quot;:&quot;2025-02-23T14:12:55.137Z&quot;,&quot;local_time_full&quot;:&quot;Sun Feb 23 2025 15:12:55 GMT+0100 (Central European Standard Time)&quot;,&quot;session&quot;:{&quot;session_uuid&quot;:&quot;4d5e25f8-7eac-42f0-990e-0fca9c3e81fe&quot;},&quot;tracked_by&quot;:&quot;prodperfect-keen-tracking-2.0.23&quot;,&quot;tracker_load_uuid&quot;:&quot;e0a4c2e1-1ba5-4d55-8ca2-07d310644acd&quot;,&quot;tracker_loaded_at&quot;:&quot;2025-02-23T14:09:56.572Z&quot;,&quot;prodperfect_test_data&quot;:null,&quot;user&quot;:{&quot;uuid&quot;:&quot;2f6494dd-f23c-4ba5-a3eb-7f03a05dd771&quot;},&quot;page&quot;:{&quot;title&quot;:&quot;BlazeDemo Purchase&quot;,&quot;description&quot;:&quot;BlazeMeter demo app&quot;,&quot;scroll_state&quot;:{&quot;pixel&quot;:1164.5,&quot;pixel_max&quot;:1164.5,&quot;ratio&quot;:1,&quot;ratio_max&quot;:1},&quot;time_on_page&quot;:179,&quot;time_on_page_ms&quot;:178565},&quot;ip_address&quot;:&quot;${keen.ip}&quot;,&quot;geo&quot;:{},&quot;user_agent&quot;:&quot;${keen.user_agent}&quot;,&quot;tech&quot;:{&quot;profile&quot;:{&quot;cookies&quot;:true,&quot;codeName&quot;:&quot;Mozilla&quot;,&quot;description&quot;:&quot;BlazeMeter demo app&quot;,&quot;language&quot;:&quot;en-US&quot;,&quot;name&quot;:&quot;Netscape&quot;,&quot;online&quot;:true,&quot;platform&quot;:&quot;MacIntel&quot;,&quot;useragent&quot;:&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0&quot;,&quot;version&quot;:&quot;5.0 (Macintosh)&quot;,&quot;screen&quot;:{&quot;height&quot;:900,&quot;width&quot;:1440,&quot;colorDepth&quot;:30,&quot;pixelDepth&quot;:30,&quot;availHeight&quot;:797,&quot;availWidth&quot;:1440,&quot;orientation&quot;:{&quot;angle&quot;:0,&quot;type&quot;:&quot;landscape&quot;}},&quot;window&quot;:{&quot;height&quot;:713,&quot;width&quot;:1440,&quot;scrollHeight&quot;:1164,&quot;ratio&quot;:{&quot;height&quot;:0.89,&quot;width&quot;:1}}}},&quot;url&quot;:{&quot;full&quot;:&quot;https://www.blazedemo.com/purchase.php&quot;,&quot;info&quot;:{}},&quot;referrer&quot;:{&quot;initial&quot;:&quot;https://www.google.com/&quot;,&quot;full&quot;:&quot;https://www.blazedemo.com/reserve.php&quot;,&quot;info&quot;:{}},&quot;time&quot;:{&quot;local&quot;:{},&quot;utc&quot;:{}},&quot;keen&quot;:{&quot;timestamp&quot;:&quot;2025-02-23T14:12:55.137Z&quot;,&quot;addons&quot;:[{&quot;name&quot;:&quot;keen:ua_parser&quot;,&quot;input&quot;:{&quot;ua_string&quot;:&quot;user_agent&quot;},&quot;output&quot;:&quot;tech&quot;},{&quot;name&quot;:&quot;keen:url_parser&quot;,&quot;input&quot;:{&quot;url&quot;:&quot;url.full&quot;},&quot;output&quot;:&quot;url.info&quot;},{&quot;name&quot;:&quot;keen:url_parser&quot;,&quot;input&quot;:{&quot;url&quot;:&quot;referrer.full&quot;},&quot;output&quot;:&quot;referrer.info&quot;},{&quot;name&quot;:&quot;keen:date_time_parser&quot;,&quot;input&quot;:{&quot;date_time&quot;:&quot;keen.timestamp&quot;},&quot;output&quot;:&quot;time.utc&quot;},{&quot;name&quot;:&quot;keen:date_time_parser&quot;,&quot;input&quot;:{&quot;date_time&quot;:&quot;local_time_full&quot;},&quot;output&quot;:&quot;time.local&quot;},{&quot;name&quot;:&quot;keen:ip_to_geo&quot;,&quot;input&quot;:{&quot;ip&quot;:&quot;ip_address&quot;,&quot;remove_ip_property&quot;:false},&quot;output&quot;:&quot;geo&quot;}]}}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Sec-Fetch-Mode" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                  <stringProp name="Header.value">no-cors</stringProp>
-                </elementProp>
-                <elementProp name="Referer" elementType="Header">
-                  <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com/</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Site" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                  <stringProp name="Header.value">cross-site</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Language" elementType="Header">
-                  <stringProp name="Header.name">Accept-Language</stringProp>
-                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
-                </elementProp>
-                <elementProp name="Origin" elementType="Header">
-                  <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com</stringProp>
-                </elementProp>
-                <elementProp name="Priority" elementType="Header">
-                  <stringProp name="Header.name">Priority</stringProp>
-                  <stringProp name="Header.value">u=6</stringProp>
-                </elementProp>
-                <elementProp name="Accept" elementType="Header">
-                  <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">*/*</stringProp>
-                </elementProp>
-                <elementProp name="Content-Type" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">text/plain;charset=UTF-8</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Encoding" elementType="Header">
-                  <stringProp name="Header.name">Accept-Encoding</stringProp>
-                  <stringProp name="Header.value">gzip, deflate, br, zstd</stringProp>
-                </elementProp>
-                <elementProp name="User-Agent" elementType="Header">
-                  <stringProp name="Header.name">User-Agent</stringProp>
-                  <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Dest" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
-                  <stringProp name="Header.value">empty</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="49590">204</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">8</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/confirmation.php" enabled="true">
-            <boolProp name="HTTPSampler.image_parser">true</boolProp>
-            <stringProp name="HTTPSampler.domain">www.blazedemo.com</stringProp>
+            <stringProp name="HTTPSampler.domain">${BLAZEMETER_URL}</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
@@ -1518,64 +252,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Sec-Fetch-Mode" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                  <stringProp name="Header.value">navigate</stringProp>
-                </elementProp>
-                <elementProp name="Referer" elementType="Header">
-                  <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com/purchase.php</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Site" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                  <stringProp name="Header.value">same-origin</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Language" elementType="Header">
-                  <stringProp name="Header.name">Accept-Language</stringProp>
-                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
-                </elementProp>
-                <elementProp name="Origin" elementType="Header">
-                  <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-User" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-User</stringProp>
-                  <stringProp name="Header.value">?1</stringProp>
-                </elementProp>
-                <elementProp name="Priority" elementType="Header">
-                  <stringProp name="Header.name">Priority</stringProp>
-                  <stringProp name="Header.value">u=0, i</stringProp>
-                </elementProp>
-                <elementProp name="Accept" elementType="Header">
-                  <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</stringProp>
-                </elementProp>
-                <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
-                  <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
-                  <stringProp name="Header.value">1</stringProp>
-                </elementProp>
-                <elementProp name="Content-Type" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Encoding" elementType="Header">
-                  <stringProp name="Header.name">Accept-Encoding</stringProp>
-                  <stringProp name="Header.value">gzip, deflate, br, zstd</stringProp>
-                </elementProp>
-                <elementProp name="User-Agent" elementType="Header">
-                  <stringProp name="Header.name">User-Agent</stringProp>
-                  <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Dest" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
-                  <stringProp name="Header.value">document</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Text Assertion" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Text Assertion">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="-1270109056">Thank you for your purchase today!</stringProp>
               </collectionProp>
@@ -1585,7 +262,7 @@
               <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="49586">200</stringProp>
               </collectionProp>
@@ -1596,212 +273,48 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/events/form_submissions" enabled="true">
-            <boolProp name="HTTPSampler.image_parser">true</boolProp>
-            <stringProp name="HTTPSampler.domain">${DATAPIPE_SERVER_NAME}</stringProp>
-            <stringProp name="HTTPSampler.port">443</stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-            <stringProp name="HTTPSampler.path">/v1/3.0/projects/${PROJECT_ID}/events/form_submissions?api_key=${API_KEY}</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;visitor&quot;:{&quot;user_id&quot;:null},&quot;event_uuid&quot;:&quot;63f38eff-6207-4033-b7b2-32a0a284aa18&quot;,&quot;iso_time_full&quot;:&quot;2025-02-23T14:12:55.135Z&quot;,&quot;local_time_full&quot;:&quot;Sun Feb 23 2025 15:12:55 GMT+0100 (Central European Standard Time)&quot;,&quot;session&quot;:{&quot;session_uuid&quot;:&quot;4d5e25f8-7eac-42f0-990e-0fca9c3e81fe&quot;},&quot;tracked_by&quot;:&quot;prodperfect-keen-tracking-2.0.23&quot;,&quot;tracker_load_uuid&quot;:&quot;e0a4c2e1-1ba5-4d55-8ca2-07d310644acd&quot;,&quot;tracker_loaded_at&quot;:&quot;2025-02-23T14:09:56.572Z&quot;,&quot;prodperfect_test_data&quot;:null,&quot;user&quot;:{&quot;uuid&quot;:&quot;2f6494dd-f23c-4ba5-a3eb-7f03a05dd771&quot;},&quot;page&quot;:{&quot;title&quot;:&quot;BlazeDemo Purchase&quot;,&quot;description&quot;:&quot;BlazeMeter demo app&quot;,&quot;scroll_state&quot;:{&quot;pixel&quot;:1164.5,&quot;pixel_max&quot;:1164.5,&quot;ratio&quot;:1,&quot;ratio_max&quot;:1},&quot;time_on_page&quot;:179,&quot;time_on_page_ms&quot;:178563},&quot;ip_address&quot;:&quot;${keen.ip}&quot;,&quot;geo&quot;:{},&quot;user_agent&quot;:&quot;${keen.user_agent}&quot;,&quot;tech&quot;:{&quot;profile&quot;:{&quot;cookies&quot;:true,&quot;codeName&quot;:&quot;Mozilla&quot;,&quot;description&quot;:&quot;BlazeMeter demo app&quot;,&quot;language&quot;:&quot;en-US&quot;,&quot;name&quot;:&quot;Netscape&quot;,&quot;online&quot;:true,&quot;platform&quot;:&quot;MacIntel&quot;,&quot;useragent&quot;:&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0&quot;,&quot;version&quot;:&quot;5.0 (Macintosh)&quot;,&quot;screen&quot;:{&quot;height&quot;:900,&quot;width&quot;:1440,&quot;colorDepth&quot;:30,&quot;pixelDepth&quot;:30,&quot;availHeight&quot;:797,&quot;availWidth&quot;:1440,&quot;orientation&quot;:{&quot;angle&quot;:0,&quot;type&quot;:&quot;landscape&quot;}},&quot;window&quot;:{&quot;height&quot;:713,&quot;width&quot;:1440,&quot;scrollHeight&quot;:1164,&quot;ratio&quot;:{&quot;height&quot;:0.89,&quot;width&quot;:1}}}},&quot;url&quot;:{&quot;full&quot;:&quot;https://www.blazedemo.com/purchase.php&quot;,&quot;info&quot;:{}},&quot;referrer&quot;:{&quot;initial&quot;:&quot;https://www.google.com/&quot;,&quot;full&quot;:&quot;https://www.blazedemo.com/reserve.php&quot;,&quot;info&quot;:{}},&quot;time&quot;:{&quot;local&quot;:{},&quot;utc&quot;:{}},&quot;keen&quot;:{&quot;timestamp&quot;:&quot;2025-02-23T14:12:55.135Z&quot;,&quot;addons&quot;:[{&quot;name&quot;:&quot;keen:ua_parser&quot;,&quot;input&quot;:{&quot;ua_string&quot;:&quot;user_agent&quot;},&quot;output&quot;:&quot;tech&quot;},{&quot;name&quot;:&quot;keen:url_parser&quot;,&quot;input&quot;:{&quot;url&quot;:&quot;url.full&quot;},&quot;output&quot;:&quot;url.info&quot;},{&quot;name&quot;:&quot;keen:url_parser&quot;,&quot;input&quot;:{&quot;url&quot;:&quot;referrer.full&quot;},&quot;output&quot;:&quot;referrer.info&quot;},{&quot;name&quot;:&quot;keen:date_time_parser&quot;,&quot;input&quot;:{&quot;date_time&quot;:&quot;keen.timestamp&quot;},&quot;output&quot;:&quot;time.utc&quot;},{&quot;name&quot;:&quot;keen:date_time_parser&quot;,&quot;input&quot;:{&quot;date_time&quot;:&quot;local_time_full&quot;},&quot;output&quot;:&quot;time.local&quot;},{&quot;name&quot;:&quot;keen:ip_to_geo&quot;,&quot;input&quot;:{&quot;ip&quot;:&quot;ip_address&quot;,&quot;remove_ip_property&quot;:false},&quot;output&quot;:&quot;geo&quot;}]},&quot;form&quot;:{&quot;action&quot;:&quot;https://www.blazedemo.com/confirmation.php&quot;,&quot;fields&quot;:{&quot;cardType&quot;:&quot;---REDACTED---&quot;,&quot;creditCardMonth&quot;:&quot;---REDACTED---&quot;,&quot;creditCardYear&quot;:&quot;---REDACTED---&quot;},&quot;method&quot;:&quot;post&quot;},&quot;element&quot;:{&quot;class&quot;:null,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;method&quot;:&quot;POST&quot;,&quot;action&quot;:&quot;https://www.blazedemo.com/confirmation.php&quot;,&quot;accept-charset&quot;:&quot;UTF-8&quot;,&quot;unique_selector&quot;:&quot;form&quot;},&quot;node_name&quot;:&quot;FORM&quot;,&quot;tag_name&quot;:&quot;FORM&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;action&quot;:&quot;https://www.blazedemo.com/confirmation.php&quot;,&quot;method&quot;:&quot;post&quot;,&quot;n_parents&quot;:[{&quot;class&quot;:&quot;container&quot;,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;class&quot;:&quot;container&quot;,&quot;unique_selector&quot;:&quot;body &gt; :nth-child(2)&quot;},&quot;node_name&quot;:&quot;DIV&quot;,&quot;tag_name&quot;:&quot;DIV&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:1},{&quot;class&quot;:null,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;unique_selector&quot;:&quot;body&quot;},&quot;node_name&quot;:&quot;BODY&quot;,&quot;tag_name&quot;:&quot;BODY&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:2},{&quot;class&quot;:null,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{&quot;lang&quot;:&quot;en&quot;,&quot;unique_selector&quot;:&quot;html&quot;},&quot;node_name&quot;:&quot;HTML&quot;,&quot;tag_name&quot;:&quot;HTML&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:3},{&quot;class&quot;:null,&quot;href&quot;:null,&quot;id&quot;:null,&quot;name&quot;:null,&quot;all_attrs&quot;:{},&quot;node_name&quot;:&quot;#document&quot;,&quot;text&quot;:null,&quot;title&quot;:null,&quot;type&quot;:null,&quot;nth_parent&quot;:4}],&quot;selector&quot;:&quot;body &gt; div:eq(1) &gt; form&quot;,&quot;text_content&quot;:&quot;---REDACTED---&quot;,&quot;cursor&quot;:&quot;auto&quot;,&quot;x_position&quot;:135,&quot;y_position&quot;:334}}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Sec-Fetch-Mode" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                  <stringProp name="Header.value">no-cors</stringProp>
-                </elementProp>
-                <elementProp name="Referer" elementType="Header">
-                  <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com/</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Site" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                  <stringProp name="Header.value">cross-site</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Language" elementType="Header">
-                  <stringProp name="Header.name">Accept-Language</stringProp>
-                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
-                </elementProp>
-                <elementProp name="Origin" elementType="Header">
-                  <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com</stringProp>
-                </elementProp>
-                <elementProp name="Priority" elementType="Header">
-                  <stringProp name="Header.name">Priority</stringProp>
-                  <stringProp name="Header.value">u=6</stringProp>
-                </elementProp>
-                <elementProp name="Accept" elementType="Header">
-                  <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">*/*</stringProp>
-                </elementProp>
-                <elementProp name="Content-Type" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">text/plain;charset=UTF-8</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Encoding" elementType="Header">
-                  <stringProp name="Header.name">Accept-Encoding</stringProp>
-                  <stringProp name="Header.value">gzip, deflate, br, zstd</stringProp>
-                </elementProp>
-                <elementProp name="User-Agent" elementType="Header">
-                  <stringProp name="Header.name">User-Agent</stringProp>
-                  <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Dest" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
-                  <stringProp name="Header.value">empty</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="49590">204</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">8</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/events/pageviews" enabled="true">
-            <boolProp name="HTTPSampler.image_parser">true</boolProp>
-            <stringProp name="HTTPSampler.domain">${DATAPIPE_SERVER_NAME}</stringProp>
-            <stringProp name="HTTPSampler.port">443</stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-            <stringProp name="HTTPSampler.path">/v1/3.0/projects/${PROJECT_ID}/events/pageviews?api_key=${API_KEY}</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;visitor&quot;:{&quot;user_id&quot;:null},&quot;event_uuid&quot;:&quot;ee3c1d32-f2a0-435e-9f22-817a5c21702f&quot;,&quot;iso_time_full&quot;:&quot;2025-02-23T14:12:55.526Z&quot;,&quot;local_time_full&quot;:&quot;Sun Feb 23 2025 15:12:55 GMT+0100 (Central European Standard Time)&quot;,&quot;session&quot;:{&quot;session_uuid&quot;:&quot;4d5e25f8-7eac-42f0-990e-0fca9c3e81fe&quot;},&quot;tracked_by&quot;:&quot;prodperfect-keen-tracking-2.0.23&quot;,&quot;tracker_load_uuid&quot;:&quot;b5b25c8b-c2c0-42c4-a09a-42081d883551&quot;,&quot;tracker_loaded_at&quot;:&quot;2025-02-23T14:12:55.526Z&quot;,&quot;prodperfect_test_data&quot;:null,&quot;user&quot;:{&quot;uuid&quot;:&quot;2f6494dd-f23c-4ba5-a3eb-7f03a05dd771&quot;},&quot;page&quot;:{&quot;title&quot;:&quot;BlazeDemo Confirmation&quot;,&quot;description&quot;:&quot;BlazeMeter demo app&quot;,&quot;scroll_state&quot;:{&quot;pixel&quot;:713,&quot;pixel_max&quot;:713,&quot;ratio&quot;:0.56,&quot;ratio_max&quot;:0.56},&quot;time_on_page&quot;:0,&quot;time_on_page_ms&quot;:0},&quot;ip_address&quot;:&quot;${keen.ip}&quot;,&quot;geo&quot;:{},&quot;user_agent&quot;:&quot;${keen.user_agent}&quot;,&quot;tech&quot;:{&quot;profile&quot;:{&quot;cookies&quot;:true,&quot;codeName&quot;:&quot;Mozilla&quot;,&quot;description&quot;:&quot;BlazeMeter demo app&quot;,&quot;language&quot;:&quot;en-US&quot;,&quot;name&quot;:&quot;Netscape&quot;,&quot;online&quot;:true,&quot;platform&quot;:&quot;MacIntel&quot;,&quot;useragent&quot;:&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0&quot;,&quot;version&quot;:&quot;5.0 (Macintosh)&quot;,&quot;screen&quot;:{&quot;height&quot;:900,&quot;width&quot;:1440,&quot;colorDepth&quot;:30,&quot;pixelDepth&quot;:30,&quot;availHeight&quot;:797,&quot;availWidth&quot;:1440,&quot;orientation&quot;:{&quot;angle&quot;:0,&quot;type&quot;:&quot;landscape&quot;}},&quot;window&quot;:{&quot;height&quot;:713,&quot;width&quot;:1440,&quot;scrollHeight&quot;:1269,&quot;ratio&quot;:{&quot;height&quot;:0.89,&quot;width&quot;:1}}}},&quot;url&quot;:{&quot;full&quot;:&quot;https://www.blazedemo.com/confirmation.php&quot;,&quot;info&quot;:{}},&quot;referrer&quot;:{&quot;initial&quot;:&quot;https://www.google.com/&quot;,&quot;full&quot;:&quot;https://www.blazedemo.com/purchase.php&quot;,&quot;info&quot;:{}},&quot;time&quot;:{&quot;local&quot;:{},&quot;utc&quot;:{}},&quot;keen&quot;:{&quot;timestamp&quot;:&quot;2025-02-23T14:12:55.526Z&quot;,&quot;addons&quot;:[{&quot;name&quot;:&quot;keen:ua_parser&quot;,&quot;input&quot;:{&quot;ua_string&quot;:&quot;user_agent&quot;},&quot;output&quot;:&quot;tech&quot;},{&quot;name&quot;:&quot;keen:url_parser&quot;,&quot;input&quot;:{&quot;url&quot;:&quot;url.full&quot;},&quot;output&quot;:&quot;url.info&quot;},{&quot;name&quot;:&quot;keen:url_parser&quot;,&quot;input&quot;:{&quot;url&quot;:&quot;referrer.full&quot;},&quot;output&quot;:&quot;referrer.info&quot;},{&quot;name&quot;:&quot;keen:date_time_parser&quot;,&quot;input&quot;:{&quot;date_time&quot;:&quot;keen.timestamp&quot;},&quot;output&quot;:&quot;time.utc&quot;},{&quot;name&quot;:&quot;keen:date_time_parser&quot;,&quot;input&quot;:{&quot;date_time&quot;:&quot;local_time_full&quot;},&quot;output&quot;:&quot;time.local&quot;},{&quot;name&quot;:&quot;keen:ip_to_geo&quot;,&quot;input&quot;:{&quot;ip&quot;:&quot;ip_address&quot;,&quot;remove_ip_property&quot;:false},&quot;output&quot;:&quot;geo&quot;}]}}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="Sec-Fetch-Mode" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
-                  <stringProp name="Header.value">no-cors</stringProp>
-                </elementProp>
-                <elementProp name="Referer" elementType="Header">
-                  <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com/</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Site" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
-                  <stringProp name="Header.value">cross-site</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Language" elementType="Header">
-                  <stringProp name="Header.name">Accept-Language</stringProp>
-                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
-                </elementProp>
-                <elementProp name="Origin" elementType="Header">
-                  <stringProp name="Header.name">Origin</stringProp>
-                  <stringProp name="Header.value">https://www.blazedemo.com</stringProp>
-                </elementProp>
-                <elementProp name="Priority" elementType="Header">
-                  <stringProp name="Header.name">Priority</stringProp>
-                  <stringProp name="Header.value">u=6</stringProp>
-                </elementProp>
-                <elementProp name="Accept" elementType="Header">
-                  <stringProp name="Header.name">Accept</stringProp>
-                  <stringProp name="Header.value">*/*</stringProp>
-                </elementProp>
-                <elementProp name="Content-Type" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">text/plain;charset=UTF-8</stringProp>
-                </elementProp>
-                <elementProp name="Accept-Encoding" elementType="Header">
-                  <stringProp name="Header.name">Accept-Encoding</stringProp>
-                  <stringProp name="Header.value">gzip, deflate, br, zstd</stringProp>
-                </elementProp>
-                <elementProp name="User-Agent" elementType="Header">
-                  <stringProp name="Header.name">User-Agent</stringProp>
-                  <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:135.0) Gecko/20100101 Firefox/135.0</stringProp>
-                </elementProp>
-                <elementProp name="Sec-Fetch-Dest" elementType="Header">
-                  <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
-                  <stringProp name="Header.value">empty</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="49590">204</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">8</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-          </hashTree>
-          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
-            <boolProp name="ResultCollector.error_logging">false</boolProp>
-            <objProp>
-              <name>saveConfig</name>
-              <value class="SampleSaveConfiguration">
-                <time>true</time>
-                <latency>true</latency>
-                <timestamp>true</timestamp>
-                <success>true</success>
-                <label>true</label>
-                <code>true</code>
-                <message>true</message>
-                <threadName>true</threadName>
-                <dataType>true</dataType>
-                <encoding>false</encoding>
-                <assertions>true</assertions>
-                <subresults>true</subresults>
-                <responseData>false</responseData>
-                <samplerData>false</samplerData>
-                <xml>false</xml>
-                <fieldNames>true</fieldNames>
-                <responseHeaders>false</responseHeaders>
-                <requestHeaders>false</requestHeaders>
-                <responseDataOnError>false</responseDataOnError>
-                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-                <assertionsResultsToSave>0</assertionsResultsToSave>
-                <bytes>true</bytes>
-                <sentBytes>true</sentBytes>
-                <url>true</url>
-                <threadCounts>true</threadCounts>
-                <idleTime>true</idleTime>
-                <connectTime>true</connectTime>
-              </value>
-            </objProp>
-            <stringProp name="filename"></stringProp>
-          </ResultCollector>
-          <hashTree/>
-          <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
-            <stringProp name="DurationAssertion.duration">5000</stringProp>
-          </DurationAssertion>
-          <hashTree/>
         </hashTree>
+        <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion">
+          <stringProp name="DurationAssertion.duration">7000</stringProp>
+        </DurationAssertion>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
         <RecordingController guiclass="RecordController" testclass="RecordingController" testname="Recording Controller" enabled="true"/>
         <hashTree/>
       </hashTree>
