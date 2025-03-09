@@ -6,7 +6,7 @@
   "description": "Performance testing for the BlazeDemo website using k6 and JMeter to evaluate response time ⏱️ and correctness ✅.",
   "main": "index.js",
   "scripts": {
-    "k6-test": "k6 run K6/test-plans/blaze-demo-test.js"
+    "k6-test": "k6 run K6/test-plans/Blaze-demo-test.js"
   },
   "keywords": [
     "Load Test",

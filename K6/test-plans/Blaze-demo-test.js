@@ -1,9 +1,9 @@
 import http from "k6/http";
 import { group } from "k6";
-import { ENDPOINTS } from "@data/Endpoints";
-import { getRandomCities } from "@data/Cities";
-import { checkStaticAssets, validateResponse } from "@utils/Validations";
-import { options } from "K6/Options.js";
+import { ENDPOINTS } from "../support/data/Endpoints.js";
+import { validateResponse, checkStaticAssets } from "../support/utils/Validations.js";
+import { getRandomCities } from "../support/data/Cities.js";
+import { options } from "../Options.js"
 
 export { options };
 

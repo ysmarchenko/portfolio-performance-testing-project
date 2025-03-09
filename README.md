@@ -1,32 +1,45 @@
-# JMeter Load Test for BlazeDemo 🚀
+# Load Test for BlazeDemo 🚀
 
-This repository contains a JMeter test plan designed to simulate load and performance testing for the BlazeDemo website. The test plan performs various HTTP requests and assertions to evaluate the response time ⏱️ and correctness ✅ of the application.
+This repository contains performance testing scripts for the BlazeDemo website using both **Apache JMeter** and **k6**. The tests simulate load and performance metrics by sending HTTP requests to the application and checking response times ⏱️ and correctness ✅.
 
 ## Test Plan Overview 📝
 
 The test plan consists of the following main parts:
 
-1. **Thread Group**: Simulates 10/100/1000 users performing the same operations with a ramp-up time of 1 second.
-2. **HTTP Requests**: Several POST requests that simulate searching for tickets ✈️, selecting a flight, and confirming a booking.
+1. **JMeter Tests**: Simulates 10/100/1000 users performing various operations such as searching for tickets ✈️, selecting a flight, and confirming a booking.
+2. **k6 Tests**: Another method to simulate load, perform the same operations, and generate performance reports.
 3. **Assertions**: Response code and content assertions to verify the correctness of the server's response.
-4. **Results Collection**: Collects detailed test results, including response times, latency, and success status.
+4. **Results Collection**: Collects detailed test results, including response times, latency, and success status for both JMeter and k6.
 
 ## Requirements 🛠️
 
 - [Apache JMeter](https://jmeter.apache.org/) 5.6.3 or later
+- [k6](https://k6.io/docs/) 0.44.0 or later
 - Java 8 or later ☕️
 
 ## How to Run 🏃‍♂️
 
+### Running JMeter Test
+
 1. Download and install [Apache JMeter](https://jmeter.apache.org/).
 2. Clone this repository to your local machine 💻.
-3. Open JMeter `bin` folder in the terminal
-4. To run the test from the command line, use the following command:
+3. Open JMeter `bin` folder in the terminal.
+4. To run the JMeter test from the command line, use the following command:
 
    ```bash
    ./jmeter -n -t ${PATH_TO_TEST_PLAN}/LoadTestBlazeDemo.jmx -JUSERS_COUNT=${THREADS_NUMBER} -l <path_to_results_folder>/Results-${THREADS_NUMBER}-users.jtl -e -o ${PATH_TO_RESULTS_FOLDER}/Test-Report-${THREADS_NUMBER}
 
-## Test Plan Structure 📂
+### Running k6 Test
+
+1. Install [k6](https://k6.io/docs/getting-started/installation/) if you haven't already.
+2. Clone this repository to your local machine 💻.
+3. Navigate to the `k6` folder containing the test scripts.
+4. Run the k6 test with the following command:
+
+   ```bash
+   k6 run loadtest.js --vus ${THREADS_NUMBER} --duration 30s
+
+## GMeter Test Plan Structure 📂
 
 The test plan includes the following:
 

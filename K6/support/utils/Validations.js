@@ -1,6 +1,6 @@
 import http from "k6/http";
 import { check } from "k6";
-import { STATIC_ASSETS } from "@test-plans/Endpoints";
+import { STATIC_ASSETS } from "../data/Endpoints.js";
 
 export function checkStaticAssets() {
     const assets = [
