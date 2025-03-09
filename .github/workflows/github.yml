@@ -14,10 +14,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up k6
-        uses: grafana/setup-k6@v1
-        with:
-          k6-version: "latest"
+      - name: Install k6
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y software-properties-common
+          sudo add-apt-repository -y ppa:gophers/archive
+          sudo apt-get update
+          sudo apt-get install -y k6
 
       - name: Run k6 test
         run: k6 run K6/test-plans/Blaze-demo-test.js
