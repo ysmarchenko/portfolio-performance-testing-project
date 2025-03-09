@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@data/*": ["K6/support/data/*"],
+      "@utils/*": ["K6/support/utils/*"],
+    }
+  }
+}
